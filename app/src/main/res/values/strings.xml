@@ -1,0 +1,209 @@
+<resources>
+	<string name="app_name">Универсальный конвертер</string>
+	
+	<!-- Weight Converter -->
+	<string name="weight_converter_title">Конвертер веса</string>
+	<string name="enter_value">Введите значение</string>
+	<string name="from_unit">Из</string>
+	<string name="to_unit">В</string>
+	<string name="result">Результат</string>
+	<string name="swap_units">Поменять местами</string>
+	
+	<!-- Weight Units -->
+	<string name="unit_kilogram">Килограмм</string>
+	<string name="unit_gram">Грамм</string>
+	<string name="unit_ton">Тонна</string>
+	<string name="unit_pound">Фунт</string>
+	<string name="unit_ounce">Унция</string>
+	<string name="unit_milligram">Миллиграмм</string>
+	
+	<!-- Length Converter -->
+	<string name="length_converter_title">Конвертер длины</string>
+	
+	<!-- Length Units -->
+	<string name="unit_meter">Метр</string>
+	<string name="unit_kilometer">Километр</string>
+	<string name="unit_centimeter">Сантиметр</string>
+	<string name="unit_millimeter">Миллиметр</string>
+	<string name="unit_mile">Миля</string>
+	<string name="unit_yard">Ярд</string>
+	<string name="unit_foot">Фут</string>
+	<string name="unit_inch">Дюйм</string>
+	<string name="unit_nautical_mile">Морская миля</string>
+	
+	<!-- Volume Converter -->
+	<string name="volume_converter_title">Конвертация Объёма</string>
+	
+	<!-- Volume Units -->
+	<string name="unit_liter">Литр</string>
+	<string name="unit_milliliter">Миллилитр</string>
+	<string name="unit_cubic_meter">Кубический метр</string>
+	<string name="unit_cubic_centimeter">Кубический сантиметр</string>
+	<string name="unit_gallon_us">Галлон (US)</string>
+	<string name="unit_gallon_uk">Галлон (UK)</string>
+	<string name="unit_pint">Пинта</string>
+	<string name="unit_cup">Чашка</string>
+	<string name="unit_tablespoon">Столовая ложка</string>
+	<string name="unit_teaspoon">Чайная ложка</string>
+	
+	<!-- Temperature Converter -->
+	<string name="temperature_converter_title">Конвертация Температуры</string>
+	
+	<!-- Temperature Units -->
+	<string name="unit_celsius">Цельсий</string>
+	<string name="unit_fahrenheit">Фаренгейт</string>
+	<string name="unit_kelvin">Кельвин</string>
+	
+	<!-- Speed Converter -->
+	<string name="speed_converter_title">Конвертация Скорости</string>
+	
+	<!-- Speed Units -->
+	<string name="unit_meter_per_second">Метр в секунду</string>
+	<string name="unit_kilometer_per_hour">Километр в час</string>
+	<string name="unit_mile_per_hour">Миля в час</string>
+	<string name="unit_knot">Узел</string>
+	<string name="unit_foot_per_second">Фут в секунду</string>
+	
+	<!-- Area Converter -->
+	<string name="area_converter_title">Конвертация Площади</string>
+	
+	<!-- Area Units -->
+	<string name="unit_square_meter">Квадратный метр</string>
+	<string name="unit_square_kilometer">Квадратный километр</string>
+	<string name="unit_square_centimeter">Квадратный сантиметр</string>
+	<string name="unit_square_millimeter">Квадратный миллиметр</string>
+	<string name="unit_hectare">Гектар</string>
+	<string name="unit_are">Ар / Сотка</string>
+	<string name="unit_square_foot">Квадратный фут</string>
+	<string name="unit_square_yard">Квадратный ярд</string>
+	<string name="unit_acre">Акр</string>
+	
+	<!-- Pressure Converter -->
+	<string name="pressure_converter_title">Конвертация Давления</string>
+	
+	<!-- Pressure Units -->
+	<string name="unit_pascal">Паскаль</string>
+	<string name="unit_kilopascal">Килопаскаль</string>
+	<string name="unit_megapascal">Мегапаскаль</string>
+	<string name="unit_bar">Бар</string>
+	<string name="unit_millibar">Миллибар</string>
+	<string name="unit_atmosphere_technical">Атмосфера техническая</string>
+	<string name="unit_atmosphere_standard">Атмосфера стандартная</string>
+	<string name="unit_millimeter_mercury">Миллиметр ртутного столба</string>
+	<string name="unit_inch_mercury">Дюйм ртутного столба</string>
+	<string name="unit_psi">Фунт на квадратный дюйм</string>
+	
+	<!-- Energy Converter -->
+	<string name="energy_converter_title">Конвертация Энергии</string>
+	
+	<!-- Energy Units -->
+	<string name="unit_joule">Джоуль</string>
+	<string name="unit_kilojoule">Килоджоуль</string>
+	<string name="unit_megajoule">Мегаджоуль</string>
+	<string name="unit_watt_hour">Ватт-час</string>
+	<string name="unit_kilowatt_hour">Киловатт-час</string>
+	<string name="unit_calorie">Калория</string>
+	<string name="unit_kilocalorie">Килокалория</string>
+	<string name="unit_btu">БТЕ</string>
+	<string name="unit_erg">Эрг</string>
+	<string name="unit_electron_volt">Электрон-вольт</string>
+	
+	<!-- Time Converter -->
+	<string name="time_converter_title">Конвертация Времени</string>
+	
+	<!-- Time Units -->
+	<string name="unit_millisecond">Миллисекунда</string>
+	<string name="unit_second">Секунда</string>
+	<string name="unit_minute">Минута</string>
+	<string name="unit_hour">Час</string>
+	<string name="unit_day">Сутки</string>
+	<string name="unit_week">Неделя</string>
+	<string name="unit_month">Месяц</string>
+	<string name="unit_year">Год</string>
+	
+	<!-- Angle Converter -->
+	<string name="angle_converter_title">Конвертация Углов</string>
+	
+	<!-- Angle Units -->
+	<string name="unit_degree">Градус</string>
+	<string name="unit_radian">Радиан</string>
+	<string name="unit_grad">Град</string>
+	<string name="unit_arc_minute">Минута дуги</string>
+	<string name="unit_arc_second">Секунда дуги</string>
+	<string name="unit_turn">Полный оборот</string>
+	
+	<!-- Density Converter -->
+	<string name="density_converter_title">Конвертация Плотности</string>
+	
+	<!-- Density Units -->
+	<string name="unit_kilogram_per_cubic_meter">Килограмм на кубический метр</string>
+	<string name="unit_gram_per_cubic_centimeter">Грамм на кубический сантиметр</string>
+	<string name="unit_gram_per_cubic_meter">Грамм на кубический метр</string>
+	<string name="unit_kilogram_per_liter">Килограмм на литр</string>
+	<string name="unit_gram_per_liter">Грамм на литр</string>
+	<string name="unit_milligram_per_liter">Миллиграмм на литр</string>
+	<string name="unit_pound_per_cubic_foot">Фунт на кубический фут</string>
+	<string name="unit_pound_per_gallon">Фунт на галлон</string>
+	<string name="unit_specific_gravity">Удельный вес</string>
+	
+	<!-- Power Converter -->
+	<string name="power_converter_title">Конвертация Мощности</string>
+	
+	<!-- Power Units -->
+	<string name="unit_watt">Ватт</string>
+	<string name="unit_kilowatt">Киловатт</string>
+	<string name="unit_megawatt">Мегаватт</string>
+	<string name="unit_horsepower_metric">Лошадиная сила (метрическая)</string>
+	<string name="unit_horsepower_mechanical">Лошадиная сила (механическая)</string>
+	<string name="unit_btu_per_hour">БТЕ в час</string>
+	<string name="unit_calorie_per_second">Калория в секунду</string>
+	<string name="unit_joule_per_second">Джоуль в секунду</string>
+	<string name="unit_foot_pound_per_minute">Фут-фунт в минуту</string>
+	
+	<!-- Torque Converter -->
+	<string name="torque_converter_title">Конвертация Крутящего Момента</string>
+	
+	<!-- Torque Units -->
+	<string name="unit_newton_meter">Ньютон-метр</string>
+	<string name="unit_millinewton_meter">Миллиньютон-метр</string>
+	<string name="unit_kilonewton_meter">Килоньютон-метр</string>
+	<string name="unit_decanewton_meter">Деканьютон-метр</string>
+	<string name="unit_pound_foot">Фунт-фут</string>
+	<string name="unit_pound_inch">Фунт-дюйм</string>
+	<string name="unit_ounce_inch">Унция-дюйм</string>
+	<string name="unit_kilogram_force_meter">Килограмм-сила метр</string>
+	<string name="unit_kilogram_force_centimeter">Килограмм-сила сантиметр</string>
+	
+	<!-- Electricity Converter -->
+	<string name="electricity_converter_title">Электричество</string>
+	<string name="tab_conversion">Конвертация</string>
+	<string name="tab_calculators">Калькуляторы</string>
+	<string name="voltage">Напряжение</string>
+	<string name="current">Ток</string>
+	<string name="resistance">Сопротивление</string>
+	<string name="calculate">Рассчитать</string>
+	
+	<!-- Electricity Units -->
+	<string name="unit_volt">Вольт</string>
+	<string name="unit_millivolt">Милливольт</string>
+	<string name="unit_kilovolt">Киловольт</string>
+	<string name="unit_ampere">Ампер</string>
+	<string name="unit_milliampere">Миллиампер</string>
+	<string name="unit_kiloampere">Килоампер</string>
+	<string name="unit_ohm">Ом</string>
+	<string name="unit_kiloohm">Килоом</string>
+	<string name="unit_megaohm">Мегаом</string>
+	
+	<!-- Calculator Types -->
+	<string name="calc_voltage">Расчёт напряжения (V = I × R)</string>
+	<string name="calc_current">Расчёт тока (I = V / R)</string>
+	<string name="calc_resistance">Расчёт сопротивления (R = V / I)</string>
+	<string name="calc_power_vi">Расчёт мощности (P = V × I)</string>
+	<string name="calc_power_ir">Расчёт мощности (P = I² × R)</string>
+	<string name="calc_power_vr">Расчёт мощности (P = V² / R)</string>
+	
+	<!-- Calculator Input Labels -->
+	<string name="calc_input_voltage">Напряжение (V)</string>
+	<string name="calc_input_current">Ток (I)</string>
+	<string name="calc_input_resistance">Сопротивление (R)</string>
+</resources>
