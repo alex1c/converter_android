@@ -3,6 +3,7 @@ package com.example.converter_android.features.weight.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.converter_android.core.utils.Constants
+import com.example.converter_android.core.utils.InputValidator
 import com.example.converter_android.features.weight.data.WeightConverter
 import com.example.converter_android.features.weight.data.WeightUnits
 import com.example.converter_android.features.weight.domain.models.WeightUnit
@@ -80,10 +81,11 @@ class WeightViewModel : ViewModel() {
 	 * 
 	 * This method handles user input in the conversion field. It performs
 	 * several important tasks:
-	 * 1. Validates and parses the input string to a numeric value
-	 * 2. Handles edge cases like empty strings, single dots, and minus signs
-	 * 3. Updates both the raw input string (for display) and numeric value (for calculation)
-	 * 4. Triggers automatic recalculation of the conversion result
+	 * 1. Validates and sanitizes the input string
+	 * 2. Parses the input string to a numeric value
+	 * 3. Handles edge cases like empty strings, single dots, and minus signs
+	 * 4. Updates both the raw input string (for display) and numeric value (for calculation)
+	 * 5. Triggers automatic recalculation of the conversion result
 	 * 
 	 * Edge cases handled:
 	 * - Empty string: Treated as 0.0
@@ -95,16 +97,31 @@ class WeightViewModel : ViewModel() {
 	 * @param value The new input value as a string. Can contain digits, decimal point, and minus sign.
 	 */
 	fun updateInputValue(value: String) {
+		// Validate and sanitize input
+		val sanitizedValue = if (InputValidator.isValidNumber(value)) {
+			value
+		} else {
+			InputValidator.sanitizeInput(value)
+		}
+		
 		// Parse the input string to a numeric value, handling edge cases
 		val numericValue = when {
-			value.isEmpty() || value == "." || value == "-" || value == "-." -> 0.0
-			else -> value.toDoubleOrNull() ?: 0.0
+			sanitizedValue.isEmpty() || sanitizedValue == "." || sanitizedValue == "-" || sanitizedValue == "-." -> 0.0
+			else -> sanitizedValue.toDoubleOrNull() ?: 0.0
+		}
+		
+		// Check if value is within safe bounds
+		val errorMessage = when {
+			!InputValidator.isValidFiniteNumber(numericValue) -> null // Will be handled in calculateResult
+			!InputValidator.isWithinSafeBounds(numericValue) -> "Число слишком большое или слишком маленькое"
+			else -> null
 		}
 		
 		// Update state with both raw input (for display) and numeric value (for calculation)
 		_uiState.value = _uiState.value.copy(
-			inputValue = value,
-			numericValue = numericValue
+			inputValue = sanitizedValue,
+			numericValue = numericValue,
+			errorMessage = errorMessage
 		)
 		
 		// Trigger automatic recalculation
@@ -172,13 +189,20 @@ class WeightViewModel : ViewModel() {
 	 * 
 	 * The calculation process:
 	 * 1. Checks if the input is empty or represents an incomplete number (edge cases)
-	 * 2. If input is valid and non-zero, performs the conversion using the converter
-	 * 3. Formats the result to the specified number of decimal places
-	 * 4. Removes trailing zeros and decimal points for cleaner display
-	 * 5. Updates the state with the formatted result
+	 * 2. Validates that the numeric value is finite and within safe bounds
+	 * 3. If input is valid and non-zero, performs the conversion using the converter
+	 * 4. Validates the result (checks for NaN, Infinity, and safe bounds)
+	 * 5. Formats the result to the specified number of decimal places
+	 * 6. Removes trailing zeros and decimal points for cleaner display
+	 * 7. Updates the state with the formatted result or error message
 	 * 
 	 * The method uses [viewModelScope] to launch the calculation in a coroutine,
 	 * ensuring that the calculation doesn't block the UI thread.
+	 * 
+	 * Error handling:
+	 * - NaN values: Shows error message "Некорректный результат"
+	 * - Infinity values: Shows error message "Результат слишком большой"
+	 * - Out of bounds: Shows error message "Число слишком большое или слишком маленькое"
 	 * 
 	 * Result formatting:
 	 * - Uses [Constants.RESULT_DECIMAL_PLACES] for precision
@@ -196,7 +220,21 @@ class WeightViewModel : ViewModel() {
 				state.inputValue == "." || 
 				state.inputValue == "-" || 
 				state.inputValue == "-." -> {
-					_uiState.value = state.copy(result = "")
+					_uiState.value = state.copy(result = "", errorMessage = null)
+				}
+				// Check if value is valid and finite
+				!InputValidator.isValidFiniteNumber(state.numericValue) -> {
+					_uiState.value = state.copy(
+						result = "",
+						errorMessage = "Некорректное значение"
+					)
+				}
+				// Check if value is within safe bounds
+				!InputValidator.isWithinSafeBounds(state.numericValue) -> {
+					_uiState.value = state.copy(
+						result = "",
+						errorMessage = "Число слишком большое или слишком маленькое"
+					)
 				}
 				// Perform conversion if input is valid and non-zero
 				state.numericValue != 0.0 -> {
@@ -205,16 +243,41 @@ class WeightViewModel : ViewModel() {
 						state.fromUnit,
 						state.toUnit
 					)
-					// Format result and remove trailing zeros/decimal point
-					_uiState.value = state.copy(
-						result = String.format("%.${Constants.RESULT_DECIMAL_PLACES}f", result)
-							.trimEnd('0')
-							.trimEnd('.')
-					)
+					
+					// Validate result
+					when {
+						result.isNaN() -> {
+							_uiState.value = state.copy(
+								result = "",
+								errorMessage = "Некорректный результат"
+							)
+						}
+						!result.isFinite() -> {
+							_uiState.value = state.copy(
+								result = "",
+								errorMessage = "Результат слишком большой"
+							)
+						}
+						!InputValidator.isWithinSafeBounds(result) -> {
+							_uiState.value = state.copy(
+								result = "",
+								errorMessage = "Результат выходит за допустимые пределы"
+							)
+						}
+						else -> {
+							// Format result and remove trailing zeros/decimal point
+							_uiState.value = state.copy(
+								result = String.format("%.${Constants.RESULT_DECIMAL_PLACES}f", result)
+									.trimEnd('0')
+									.trimEnd('.'),
+								errorMessage = null
+							)
+						}
+					}
 				}
 				// Handle zero value
 				else -> {
-					_uiState.value = state.copy(result = "0")
+					_uiState.value = state.copy(result = "0", errorMessage = null)
 				}
 			}
 		}
@@ -273,6 +336,20 @@ data class WeightUiState(
 	 * List of all available weight units.
 	 * Used to populate the unit selection dropdown menus.
 	 */
-	val availableUnits: List<WeightUnit> = emptyList()
+	val availableUnits: List<WeightUnit> = emptyList(),
+	
+	/**
+	 * Error message to display to the user if validation or calculation fails.
+	 * 
+	 * Possible error messages:
+	 * - "Некорректное значение" - Input is not a valid number
+	 * - "Число слишком большое или слишком маленькое" - Input is out of safe bounds
+	 * - "Некорректный результат" - Calculation resulted in NaN
+	 * - "Результат слишком большой" - Calculation resulted in Infinity
+	 * - "Результат выходит за допустимые пределы" - Result is out of safe bounds
+	 * 
+	 * `null` indicates no error.
+	 */
+	val errorMessage: String? = null
 )
 

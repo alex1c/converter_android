@@ -5,17 +5,58 @@
 # For more details, see
 #   http://developer.android.com/guide/developing/tools/proguard.html
 
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
+# Keep line number information for debugging stack traces
+-keepattributes SourceFile,LineNumberTable
+-renamesourcefileattribute SourceFile
 
-# Uncomment this to preserve the line number information for
-# debugging stack traces.
-#-keepattributes SourceFile,LineNumberTable
+# Keep all ViewModels and their state classes
+-keep class * extends androidx.lifecycle.ViewModel { *; }
+-keep class * extends androidx.lifecycle.ViewModel$* { *; }
 
-# If you keep the line number information, uncomment this to
-# hide the original source file name.
-#-renamesourcefileattribute SourceFile
+# Keep data classes used in StateFlow
+-keep class com.forestmusic.converter_android.features.**.*UiState { *; }
+
+# Keep enum classes for units
+-keep class com.forestmusic.converter_android.features.**.*Unit { *; }
+-keepclassmembers enum com.forestmusic.converter_android.features.**.*Unit {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+
+# Keep interfaces
+-keep interface com.forestmusic.converter_android.core.converters.UnitConverter { *; }
+
+# Keep use cases
+-keep class com.forestmusic.converter_android.features.**.*UseCase { *; }
+
+# Keep converters
+-keep class com.forestmusic.converter_android.features.**.*Converter { *; }
+
+# Keep utility classes
+-keep class com.forestmusic.converter_android.core.utils.** { *; }
+
+# Keep data layer objects
+-keep class com.forestmusic.converter_android.features.**.*Units { *; }
+
+# Keep Compose-related classes
+-keep class androidx.compose.** { *; }
+-keep class kotlin.coroutines.** { *; }
+
+# Keep Kotlin metadata
+-keepattributes *Annotation*
+-keepattributes Signature
+-keepattributes Exceptions
+-keepattributes InnerClasses
+-keepattributes EnclosingMethod
+
+# Keep Parcelable implementations
+-keep class * implements android.os.Parcelable {
+    public static final android.os.Parcelable$Creator *;
+}
+
+# Remove logging in release builds
+-assumenosideeffects class android.util.Log {
+    public static *** d(...);
+    public static *** v(...);
+    public static *** i(...);
+}

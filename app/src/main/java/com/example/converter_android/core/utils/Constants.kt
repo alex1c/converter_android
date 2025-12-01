@@ -97,5 +97,31 @@ object Constants {
 	 * durations for specific effects (e.g., longer for complex transitions).
 	 */
 	const val ANIMATION_DURATION = 300
+
+	/**
+	 * Maximum safe value for numeric calculations.
+	 * 
+	 * Values larger than this may cause overflow or precision issues.
+	 * This constant is used to validate user input and prevent calculations
+	 * with extremely large numbers that could cause unexpected behavior.
+	 * 
+	 * Value: 1e15 (1,000,000,000,000,000)
+	 * 
+	 * @see InputValidator.MAX_SAFE_VALUE
+	 */
+	const val MAX_SAFE_VALUE = 1e15
+
+	/**
+	 * Minimum safe value for numeric calculations.
+	 * 
+	 * Values smaller than this may cause underflow or precision issues.
+	 * This constant is used to validate user input and prevent calculations
+	 * with extremely small numbers that could cause unexpected behavior.
+	 * 
+	 * Value: -1e15 (-1,000,000,000,000,000)
+	 * 
+	 * @see InputValidator.MIN_SAFE_VALUE
+	 */
+	const val MIN_SAFE_VALUE = -1e15
 }
 

@@ -3,6 +3,7 @@ package com.example.converter_android.features.electricity.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.converter_android.core.utils.Constants
+import com.example.converter_android.core.utils.InputValidator
 import com.example.converter_android.features.electricity.data.CurrentConverter
 import com.example.converter_android.features.electricity.data.CurrentUnits
 import com.example.converter_android.features.electricity.data.ResistanceConverter
@@ -130,16 +131,31 @@ class ElectricityViewModel : ViewModel() {
 	 * @param value The new input value as a string. Can contain digits, decimal point, and minus sign.
 	 */
 	fun updateInputValue(value: String) {
+		// Validate and sanitize input
+		val sanitizedValue = if (InputValidator.isValidNumber(value)) {
+			value
+		} else {
+			InputValidator.sanitizeInput(value)
+		}
+		
 		// Parse the input string to a numeric value, handling edge cases
 		val numericValue = when {
-			value.isEmpty() || value == "." || value == "-" || value == "-." -> 0.0
-			else -> value.toDoubleOrNull() ?: 0.0
+			sanitizedValue.isEmpty() || sanitizedValue == "." || sanitizedValue == "-" || sanitizedValue == "-." -> 0.0
+			else -> sanitizedValue.toDoubleOrNull() ?: 0.0
+		}
+		
+		// Check if value is within safe bounds
+		val errorMessage = when {
+			!InputValidator.isValidFiniteNumber(numericValue) -> null // Will be handled in calculateConversionResult
+			!InputValidator.isWithinSafeBounds(numericValue) -> "Число слишком большое или слишком маленькое"
+			else -> null
 		}
 		
 		// Update state with both raw input (for display) and numeric value (for calculation)
 		_uiState.value = _uiState.value.copy(
-			inputValue = value,
-			numericValue = numericValue
+			inputValue = sanitizedValue,
+			numericValue = numericValue,
+			conversionErrorMessage = errorMessage
 		)
 		
 		// Trigger automatic recalculation
@@ -336,7 +352,21 @@ class ElectricityViewModel : ViewModel() {
 				state.inputValue == "." ||
 				state.inputValue == "-" ||
 				state.inputValue == "-." -> {
-					_uiState.value = state.copy(conversionResult = "")
+					_uiState.value = state.copy(conversionResult = "", conversionErrorMessage = null)
+				}
+				// Check if value is valid and finite
+				!InputValidator.isValidFiniteNumber(state.numericValue) -> {
+					_uiState.value = state.copy(
+						conversionResult = "",
+						conversionErrorMessage = "Некорректное значение"
+					)
+				}
+				// Check if value is within safe bounds
+				!InputValidator.isWithinSafeBounds(state.numericValue) -> {
+					_uiState.value = state.copy(
+						conversionResult = "",
+						conversionErrorMessage = "Число слишком большое или слишком маленькое"
+					)
 				}
 				// Perform conversion if input is valid and non-zero
 				state.numericValue != 0.0 -> {
@@ -358,16 +388,41 @@ class ElectricityViewModel : ViewModel() {
 							state.resistanceToUnit
 						)
 					}
-					// Format result and remove trailing zeros/decimal point
-					_uiState.value = state.copy(
-						conversionResult = String.format("%.${Constants.RESULT_DECIMAL_PLACES}f", result)
-							.trimEnd('0')
-							.trimEnd('.')
-					)
+					
+					// Validate result
+					when {
+						result.isNaN() -> {
+							_uiState.value = state.copy(
+								conversionResult = "",
+								conversionErrorMessage = "Некорректный результат"
+							)
+						}
+						!result.isFinite() -> {
+							_uiState.value = state.copy(
+								conversionResult = "",
+								conversionErrorMessage = "Результат слишком большой"
+							)
+						}
+						!InputValidator.isWithinSafeBounds(result) -> {
+							_uiState.value = state.copy(
+								conversionResult = "",
+								conversionErrorMessage = "Результат выходит за допустимые пределы"
+							)
+						}
+						else -> {
+							// Format result and remove trailing zeros/decimal point
+							_uiState.value = state.copy(
+								conversionResult = String.format("%.${Constants.RESULT_DECIMAL_PLACES}f", result)
+									.trimEnd('0')
+									.trimEnd('.'),
+								conversionErrorMessage = null
+							)
+						}
+					}
 				}
 				// Handle zero value
 				else -> {
-					_uiState.value = state.copy(conversionResult = "0")
+					_uiState.value = state.copy(conversionResult = "0", conversionErrorMessage = null)
 				}
 			}
 		}
@@ -397,7 +452,8 @@ class ElectricityViewModel : ViewModel() {
 			selectedCalculator = type,
 			calculatorInput1 = "",
 			calculatorInput2 = "",
-			calculatorResult = ""
+			calculatorResult = "",
+			calculatorErrorMessage = null // Clear error when switching calculators
 		)
 	}
 
@@ -405,8 +461,8 @@ class ElectricityViewModel : ViewModel() {
 	 * Updates the first input field value for the calculator.
 	 * 
 	 * This method is called when the user types in the first input field.
-	 * The value is stored as a string to preserve user input exactly as typed,
-	 * including incomplete entries (e.g., "12." while typing "12.5").
+	 * The value is validated and sanitized before being stored. Invalid characters
+	 * are removed to ensure safe parsing.
 	 * 
 	 * The calculation is not performed automatically; the user must click
 	 * the "Calculate" button to trigger the calculation.
@@ -414,15 +470,24 @@ class ElectricityViewModel : ViewModel() {
 	 * @param value The new input value as a string
 	 */
 	fun updateCalculatorInput1(value: String) {
-		_uiState.value = _uiState.value.copy(calculatorInput1 = value)
+		// Sanitize input
+		val sanitizedValue = if (InputValidator.isValidNumber(value)) {
+			value
+		} else {
+			InputValidator.sanitizeInput(value)
+		}
+		_uiState.value = _uiState.value.copy(
+			calculatorInput1 = sanitizedValue,
+			calculatorErrorMessage = null // Clear error when user starts typing
+		)
 	}
 
 	/**
 	 * Updates the second input field value for the calculator.
 	 * 
 	 * This method is called when the user types in the second input field.
-	 * The value is stored as a string to preserve user input exactly as typed,
-	 * including incomplete entries (e.g., "12." while typing "12.5").
+	 * The value is validated and sanitized before being stored. Invalid characters
+	 * are removed to ensure safe parsing.
 	 * 
 	 * The calculation is not performed automatically; the user must click
 	 * the "Calculate" button to trigger the calculation.
@@ -430,7 +495,16 @@ class ElectricityViewModel : ViewModel() {
 	 * @param value The new input value as a string
 	 */
 	fun updateCalculatorInput2(value: String) {
-		_uiState.value = _uiState.value.copy(calculatorInput2 = value)
+		// Sanitize input
+		val sanitizedValue = if (InputValidator.isValidNumber(value)) {
+			value
+		} else {
+			InputValidator.sanitizeInput(value)
+		}
+		_uiState.value = _uiState.value.copy(
+			calculatorInput2 = sanitizedValue,
+			calculatorErrorMessage = null // Clear error when user starts typing
+		)
 	}
 
 	/**
@@ -461,14 +535,61 @@ class ElectricityViewModel : ViewModel() {
 	fun calculate() {
 		val state = _uiState.value
 		
-		// Parse input strings to numeric values, defaulting to 0.0 if parsing fails
-		val input1 = state.calculatorInput1.toDoubleOrNull() ?: 0.0
-		val input2 = state.calculatorInput2.toDoubleOrNull() ?: 0.0
+		// Sanitize and parse input strings to numeric values
+		val sanitizedInput1 = if (InputValidator.isValidNumber(state.calculatorInput1)) {
+			state.calculatorInput1
+		} else {
+			InputValidator.sanitizeInput(state.calculatorInput1)
+		}
+		val sanitizedInput2 = if (InputValidator.isValidNumber(state.calculatorInput2)) {
+			state.calculatorInput2
+		} else {
+			InputValidator.sanitizeInput(state.calculatorInput2)
+		}
+		
+		val input1 = sanitizedInput1.toDoubleOrNull() ?: 0.0
+		val input2 = sanitizedInput2.toDoubleOrNull() ?: 0.0
 
-		// Validate inputs: both must be non-zero for meaningful calculations
-		if (input1 == 0.0 || input2 == 0.0) {
-			_uiState.value = state.copy(calculatorResult = "")
-			return
+		// Validate inputs: check if they are finite and within safe bounds
+		when {
+			!InputValidator.isValidFiniteNumber(input1) || !InputValidator.isValidFiniteNumber(input2) -> {
+				_uiState.value = state.copy(
+					calculatorResult = "",
+					calculatorErrorMessage = "Некорректное значение"
+				)
+				return
+			}
+			!InputValidator.isWithinSafeBounds(input1) || !InputValidator.isWithinSafeBounds(input2) -> {
+				_uiState.value = state.copy(
+					calculatorResult = "",
+					calculatorErrorMessage = "Число слишком большое или слишком маленькое"
+				)
+				return
+			}
+		}
+
+		// Check for division by zero based on calculator type
+		when (state.selectedCalculator) {
+			CalculatorType.CURRENT, CalculatorType.RESISTANCE, CalculatorType.POWER_VR -> {
+				// These calculations involve division by input2
+				if (input2 == 0.0) {
+					_uiState.value = state.copy(
+						calculatorResult = "",
+						calculatorErrorMessage = "Деление на ноль невозможно"
+					)
+					return
+				}
+			}
+			CalculatorType.VOLTAGE, CalculatorType.POWER_VI, CalculatorType.POWER_IR -> {
+				// These calculations don't involve division, but check for zero inputs
+				if (input1 == 0.0 || input2 == 0.0) {
+					_uiState.value = state.copy(
+						calculatorResult = "",
+						calculatorErrorMessage = null
+					)
+					return
+				}
+			}
 		}
 
 		// Perform calculation based on selected calculator type
@@ -481,12 +602,36 @@ class ElectricityViewModel : ViewModel() {
 			CalculatorType.POWER_VR -> ElectricCalc.powerVR(input1, input2) // V, R
 		}
 
-		// Format result and remove trailing zeros/decimal point
-		_uiState.value = state.copy(
-			calculatorResult = String.format("%.${Constants.RESULT_DECIMAL_PLACES}f", result)
-				.trimEnd('0')
-				.trimEnd('.')
-		)
+		// Validate result
+		when {
+			result.isNaN() -> {
+				_uiState.value = state.copy(
+					calculatorResult = "",
+					calculatorErrorMessage = "Некорректный результат"
+				)
+			}
+			!result.isFinite() -> {
+				_uiState.value = state.copy(
+					calculatorResult = "",
+					calculatorErrorMessage = "Результат слишком большой"
+				)
+			}
+			!InputValidator.isWithinSafeBounds(result) -> {
+				_uiState.value = state.copy(
+					calculatorResult = "",
+					calculatorErrorMessage = "Результат выходит за допустимые пределы"
+				)
+			}
+			else -> {
+				// Format result and remove trailing zeros/decimal point
+				_uiState.value = state.copy(
+					calculatorResult = String.format("%.${Constants.RESULT_DECIMAL_PLACES}f", result)
+						.trimEnd('0')
+						.trimEnd('.'),
+					calculatorErrorMessage = null
+				)
+			}
+		}
 	}
 }
 
@@ -640,7 +785,38 @@ data class ElectricityUiState(
 	 * Formatted to [Constants.RESULT_DECIMAL_PLACES] decimal places with
 	 * trailing zeros and decimal points removed.
 	 */
-	val calculatorResult: String = ""
+	val calculatorResult: String = "",
+	
+	// ==================== Error Messages ====================
+	
+	/**
+	 * Error message for conversion operations.
+	 * 
+	 * Possible error messages:
+	 * - "Некорректное значение" - Input is not a valid number
+	 * - "Число слишком большое или слишком маленькое" - Input is out of safe bounds
+	 * - "Некорректный результат" - Calculation resulted in NaN
+	 * - "Результат слишком большой" - Calculation resulted in Infinity
+	 * - "Результат выходит за допустимые пределы" - Result is out of safe bounds
+	 * 
+	 * `null` indicates no error.
+	 */
+	val conversionErrorMessage: String? = null,
+	
+	/**
+	 * Error message for calculator operations.
+	 * 
+	 * Possible error messages:
+	 * - "Некорректное значение" - Input is not a valid number
+	 * - "Число слишком большое или слишком маленькое" - Input is out of safe bounds
+	 * - "Деление на ноль невозможно" - Division by zero attempted
+	 * - "Некорректный результат" - Calculation resulted in NaN
+	 * - "Результат слишком большой" - Calculation resulted in Infinity
+	 * - "Результат выходит за допустимые пределы" - Result is out of safe bounds
+	 * 
+	 * `null` indicates no error.
+	 */
+	val calculatorErrorMessage: String? = null
 )
 
 /**

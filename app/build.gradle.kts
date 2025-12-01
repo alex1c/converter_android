@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-	namespace = "com.example.converter_android"
+	namespace = "com.forestmusic.converter_android"
 	compileSdk = 36
 
 	defaultConfig {
-		applicationId = "com.example.converter_android"
+		applicationId = "com.forestmusic.converter_android"
 		minSdk = 24
 		targetSdk = 36
 		versionCode = 1
@@ -18,13 +18,30 @@ android {
 		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 	}
 
+	signingConfigs {
+		create("release") {
+			// Keystore configuration for release builds
+			// In production, use environment variables or keystore.properties file
+			// For now, using debug keystore - MUST be changed before production release
+			storeFile = file("${project.rootDir}/keystore/debug.keystore")
+			storePassword = "android"
+			keyAlias = "androiddebugkey"
+			keyPassword = "android"
+		}
+	}
+
 	buildTypes {
 		release {
-			isMinifyEnabled = false
+			isMinifyEnabled = true
+			isShrinkResources = true
 			proguardFiles(
 				getDefaultProguardFile("proguard-android-optimize.txt"),
 				"proguard-rules.pro"
 			)
+			signingConfig = signingConfigs.getByName("release")
+		}
+		debug {
+			applicationIdSuffix = ".debug"
 		}
 	}
 	compileOptions {
