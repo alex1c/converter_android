@@ -6,11 +6,14 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -36,6 +39,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -86,6 +90,13 @@ fun ElectricityScreen(
 	
 	// Get Android context for accessing resources (used in child composables)
 	val context = LocalContext.current
+	
+	// Get status bar insets for proper top padding
+	val statusBarPadding = WindowInsets.statusBars.asPaddingValues()
+	// Calculate top padding: status bar + header font size (headlineMedium fontSize)
+	val density = LocalDensity.current
+	val headerFontSize = with(density) { MaterialTheme.typography.headlineMedium.fontSize.toDp() }
+	val topBarPadding = statusBarPadding.calculateTopPadding() + headerFontSize
 
 	// Use Scaffold for consistent app structure with top bar
 	Scaffold(
@@ -94,7 +105,12 @@ fun ElectricityScreen(
 			Row(
 				modifier = Modifier
 					.fillMaxWidth()
-					.padding(8.dp),
+					.padding(
+						start = Constants.SPACING_SM.dp,
+						end = Constants.SPACING_SM.dp,
+						top = topBarPadding, // Top padding: status bar + header height
+						bottom = Constants.SPACING_SM.dp
+					),
 				verticalAlignment = Alignment.CenterVertically
 			) {
 				// Back button to navigate to previous screen
@@ -177,9 +193,14 @@ private fun ConversionTab(
 	Column(
 		modifier = Modifier
 			.fillMaxSize()
-			.padding(16.dp)
+			.padding(
+				start = Constants.SPACING_MD.dp,
+				end = Constants.SPACING_MD.dp,
+				bottom = Constants.SPACING_MD.dp,
+				top = Constants.SPACING_MD.dp // Top padding (Scaffold already has topBar padding)
+			)
 			.verticalScroll(rememberScrollState()), // Enable vertical scrolling for smaller screens
-		verticalArrangement = Arrangement.spacedBy(24.dp) // Consistent spacing between elements
+		verticalArrangement = Arrangement.spacedBy(Constants.SPACING_LG.dp) // Consistent spacing between elements
 	) {
 		// Quantity type selector: Allows user to choose between Voltage, Current, or Resistance
 		QuantityTypeSelector(
@@ -364,9 +385,14 @@ private fun CalculatorsTab(
 	Column(
 		modifier = Modifier
 			.fillMaxSize()
-			.padding(16.dp)
+			.padding(
+				start = Constants.SPACING_MD.dp,
+				end = Constants.SPACING_MD.dp,
+				bottom = Constants.SPACING_MD.dp,
+				top = Constants.SPACING_MD.dp // Top padding (Scaffold already has topBar padding)
+			)
 			.verticalScroll(rememberScrollState()), // Enable vertical scrolling
-		verticalArrangement = Arrangement.spacedBy(16.dp) // Consistent spacing
+		verticalArrangement = Arrangement.spacedBy(Constants.SPACING_MD.dp) // Consistent spacing
 	) {
 		// Calculator type selector: List of all available calculators
 		CalculatorTypeSelector(

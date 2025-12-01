@@ -1,5 +1,5 @@
 <resources>
-	<string name="app_name">Универсальный конвертер</string>
+	<string name="app_name">Конвертер единиц измерения универсальный</string>
 	
 	<!-- Weight Converter -->
 	<string name="weight_converter_title">Конвертер веса</string>

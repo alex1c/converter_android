@@ -11,11 +11,14 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Card
@@ -35,6 +38,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -55,12 +59,24 @@ fun DensityScreen(
 ) {
 	val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 	val context = LocalContext.current
+	
+	// Get status bar insets for proper top padding
+	val statusBarPadding = WindowInsets.statusBars.asPaddingValues()
+	// Calculate top padding: status bar + header font size (headlineMedium fontSize)
+	val density = LocalDensity.current
+	val headerFontSize = with(density) { MaterialTheme.typography.headlineMedium.fontSize.toDp() }
+	val topPadding = statusBarPadding.calculateTopPadding() + headerFontSize
 
 	Column(
 		modifier = modifier
 			.fillMaxSize()
-			.padding(16.dp),
-		verticalArrangement = Arrangement.spacedBy(24.dp)
+			.padding(
+				start = Constants.SPACING_MD.dp,
+				end = Constants.SPACING_MD.dp,
+				bottom = Constants.SPACING_MD.dp,
+				top = topPadding // Top padding: status bar + header height
+			),
+		verticalArrangement = Arrangement.spacedBy(Constants.SPACING_LG.dp)
 	) {
 		// Back button and Title row
 		Row(

@@ -6,11 +6,14 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
@@ -26,6 +29,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -70,11 +74,23 @@ fun CategoriesScreen(
 	onCategorySelected: (String) -> Unit,
 	modifier: Modifier = Modifier
 ) {
+	// Get status bar insets for proper top padding
+	val statusBarPadding = WindowInsets.statusBars.asPaddingValues()
+	// Calculate top padding: status bar + header font size (headlineLarge fontSize)
+	val density = LocalDensity.current
+	val headerFontSize = with(density) { MaterialTheme.typography.headlineLarge.fontSize.toDp() }
+	val topPadding = statusBarPadding.calculateTopPadding() + headerFontSize
+	
 	// Root column container with padding and centered horizontal alignment
 	Column(
 		modifier = modifier
 			.fillMaxSize()
-			.padding(Constants.SPACING_MD.dp),
+			.padding(
+				start = Constants.SPACING_MD.dp,
+				end = Constants.SPACING_MD.dp,
+				bottom = Constants.SPACING_MD.dp,
+				top = topPadding // Top padding: status bar + header height
+			),
 		horizontalAlignment = Alignment.CenterHorizontally
 	) {
 		// Application title displayed at the top
