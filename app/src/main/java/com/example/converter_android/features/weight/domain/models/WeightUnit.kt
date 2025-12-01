@@ -64,7 +64,7 @@ enum class WeightUnit(
 	 * 
 	 * Conversion factor: 1.0 (base unit, no conversion needed)
 	 */
-	KILOGRAM(com.example.converter_android.R.string.unit_kilogram, 1.0),
+	KILOGRAM(com.forestmusic.converter_android.R.string.unit_kilogram, 1.0),
 	
 	/**
 	 * Gram (g) - One thousandth of a kilogram.
@@ -74,7 +74,7 @@ enum class WeightUnit(
 	 * 
 	 * Conversion factor: 0.001 (1 g = 0.001 kg)
 	 */
-	GRAM(com.example.converter_android.R.string.unit_gram, 0.001),
+	GRAM(com.forestmusic.converter_android.R.string.unit_gram, 0.001),
 	
 	/**
 	 * Ton (t) - One thousand kilograms (metric ton).
@@ -84,7 +84,7 @@ enum class WeightUnit(
 	 * 
 	 * Conversion factor: 1000.0 (1 t = 1000 kg)
 	 */
-	TON(com.example.converter_android.R.string.unit_ton, 1000.0),
+	TON(com.forestmusic.converter_android.R.string.unit_ton, 1000.0),
 	
 	/**
 	 * Pound (lb) - Imperial unit of mass.
@@ -95,7 +95,7 @@ enum class WeightUnit(
 	 * 
 	 * Conversion factor: 0.453592 (1 lb ≈ 0.453592 kg)
 	 */
-	POUND(com.example.converter_android.R.string.unit_pound, 0.453592),
+	POUND(com.forestmusic.converter_android.R.string.unit_pound, 0.453592),
 	
 	/**
 	 * Ounce (oz) - Imperial unit of mass.
@@ -106,7 +106,7 @@ enum class WeightUnit(
 	 * 
 	 * Conversion factor: 0.0283495 (1 oz ≈ 0.0283495 kg)
 	 */
-	OUNCE(com.example.converter_android.R.string.unit_ounce, 0.0283495),
+	OUNCE(com.forestmusic.converter_android.R.string.unit_ounce, 0.0283495),
 	
 	/**
 	 * Milligram (mg) - One millionth of a kilogram.
@@ -116,6 +116,6 @@ enum class WeightUnit(
 	 * 
 	 * Conversion factor: 0.000001 (1 mg = 0.000001 kg)
 	 */
-	MILLIGRAM(com.example.converter_android.R.string.unit_milligram, 0.000001)
+	MILLIGRAM(com.forestmusic.converter_android.R.string.unit_milligram, 0.000001)
 }
 

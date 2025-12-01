@@ -29,13 +29,13 @@ enum class TimeUnit(
 	val displayNameRes: Int,
 	val conversionFactorToSecond: Double
 ) {
-	MILLISECOND(com.example.converter_android.R.string.unit_millisecond, 0.001),
-	SECOND(com.example.converter_android.R.string.unit_second, 1.0),
-	MINUTE(com.example.converter_android.R.string.unit_minute, 60.0),
-	HOUR(com.example.converter_android.R.string.unit_hour, 3600.0),
-	DAY(com.example.converter_android.R.string.unit_day, 86400.0),
-	WEEK(com.example.converter_android.R.string.unit_week, 604800.0),
-	MONTH(com.example.converter_android.R.string.unit_month, 2_629_746.0), // 30.436875 days
-	YEAR(com.example.converter_android.R.string.unit_year, 31_556_952.0) // 365.2425 days
+	MILLISECOND(com.forestmusic.converter_android.R.string.unit_millisecond, 0.001),
+	SECOND(com.forestmusic.converter_android.R.string.unit_second, 1.0),
+	MINUTE(com.forestmusic.converter_android.R.string.unit_minute, 60.0),
+	HOUR(com.forestmusic.converter_android.R.string.unit_hour, 3600.0),
+	DAY(com.forestmusic.converter_android.R.string.unit_day, 86400.0),
+	WEEK(com.forestmusic.converter_android.R.string.unit_week, 604800.0),
+	MONTH(com.forestmusic.converter_android.R.string.unit_month, 2_629_746.0), // 30.436875 days
+	YEAR(com.forestmusic.converter_android.R.string.unit_year, 31_556_952.0) // 365.2425 days
 }
 

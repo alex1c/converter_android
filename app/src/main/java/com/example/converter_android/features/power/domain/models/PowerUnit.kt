@@ -32,14 +32,14 @@ enum class PowerUnit(
 	val displayNameRes: Int,
 	val conversionFactorToWatt: Double
 ) {
-	WATT(com.example.converter_android.R.string.unit_watt, 1.0),
-	KILOWATT(com.example.converter_android.R.string.unit_kilowatt, 1000.0),
-	MEGAWATT(com.example.converter_android.R.string.unit_megawatt, 1_000_000.0),
-	HORSEPOWER_METRIC(com.example.converter_android.R.string.unit_horsepower_metric, 735.49875),
-	HORSEPOWER_MECHANICAL(com.example.converter_android.R.string.unit_horsepower_mechanical, 745.699872),
-	BTU_PER_HOUR(com.example.converter_android.R.string.unit_btu_per_hour, 0.29307107),
-	CALORIE_PER_SECOND(com.example.converter_android.R.string.unit_calorie_per_second, 4.1868),
-	JOULE_PER_SECOND(com.example.converter_android.R.string.unit_joule_per_second, 1.0),
-	FOOT_POUND_PER_MINUTE(com.example.converter_android.R.string.unit_foot_pound_per_minute, 0.0225969658)
+	WATT(com.forestmusic.converter_android.R.string.unit_watt, 1.0),
+	KILOWATT(com.forestmusic.converter_android.R.string.unit_kilowatt, 1000.0),
+	MEGAWATT(com.forestmusic.converter_android.R.string.unit_megawatt, 1_000_000.0),
+	HORSEPOWER_METRIC(com.forestmusic.converter_android.R.string.unit_horsepower_metric, 735.49875),
+	HORSEPOWER_MECHANICAL(com.forestmusic.converter_android.R.string.unit_horsepower_mechanical, 745.699872),
+	BTU_PER_HOUR(com.forestmusic.converter_android.R.string.unit_btu_per_hour, 0.29307107),
+	CALORIE_PER_SECOND(com.forestmusic.converter_android.R.string.unit_calorie_per_second, 4.1868),
+	JOULE_PER_SECOND(com.forestmusic.converter_android.R.string.unit_joule_per_second, 1.0),
+	FOOT_POUND_PER_MINUTE(com.forestmusic.converter_android.R.string.unit_foot_pound_per_minute, 0.0225969658)
 }
 

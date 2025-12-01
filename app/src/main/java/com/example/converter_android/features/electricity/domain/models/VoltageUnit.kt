@@ -53,7 +53,7 @@ enum class VoltageUnit(
 	 * 
 	 * Conversion factor: 1.0 (base unit, no conversion needed)
 	 */
-	VOLT(com.example.converter_android.R.string.unit_volt, 1.0),
+	VOLT(com.forestmusic.converter_android.R.string.unit_volt, 1.0),
 	
 	/**
 	 * Millivolt (mV) - One thousandth of a volt.
@@ -67,7 +67,7 @@ enum class VoltageUnit(
 	 * 1000 mV = 1 V
 	 * 500 mV = 0.5 V
 	 */
-	MILLIVOLT(com.example.converter_android.R.string.unit_millivolt, 0.001),
+	MILLIVOLT(com.forestmusic.converter_android.R.string.unit_millivolt, 0.001),
 	
 	/**
 	 * Kilovolt (kV) - One thousand volts.
@@ -81,6 +81,6 @@ enum class VoltageUnit(
 	 * 1 kV = 1000 V
 	 * 0.5 kV = 500 V
 	 */
-	KILOVOLT(com.example.converter_android.R.string.unit_kilovolt, 1000.0)
+	KILOVOLT(com.forestmusic.converter_android.R.string.unit_kilovolt, 1000.0)
 }
 

@@ -8,6 +8,14 @@
 	<string name="to_unit">В</string>
 	<string name="result">Результат</string>
 	<string name="swap_units">Поменять местами</string>
+	<string name="copy_result">Копировать результат</string>
+	<string name="copied">Скопировано</string>
+	<string name="error_invalid_value">Некорректное значение</string>
+	<string name="error_too_large">Число слишком большое или слишком маленькое</string>
+	<string name="error_invalid_result">Некорректный результат</string>
+	<string name="error_result_too_large">Результат слишком большой</string>
+	<string name="error_out_of_bounds">Результат выходит за допустимые пределы</string>
+	<string name="error_division_by_zero">Деление на ноль невозможно</string>
 	
 	<!-- Weight Units -->
 	<string name="unit_kilogram">Килограмм</string>

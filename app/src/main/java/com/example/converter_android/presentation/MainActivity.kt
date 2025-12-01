@@ -6,9 +6,15 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import com.example.converter_android.presentation.navigation.NavGraph
+import com.example.converter_android.presentation.splash.SplashScreen
 import com.example.converter_android.presentation.theme.ConverterTheme
 
 /**
@@ -65,19 +71,39 @@ class MainActivity : ComponentActivity() {
 		setContent {
 			// Apply the application theme (supports light/dark mode)
 			ConverterTheme {
-				// Root surface container that fills the entire screen
-				Surface(
-					modifier = Modifier.fillMaxSize(),
-					color = MaterialTheme.colorScheme.background
-				) {
-					// Create and remember the navigation controller
-					// This controller manages navigation between screens
-					val navController = rememberNavController()
-
-					// Set up the navigation graph with all app screens
-					NavGraph(navController = navController)
-				}
+				MainContent()
 			}
+		}
+	}
+}
+
+/**
+ * Main content composable that handles splash screen and navigation.
+ * 
+ * This composable manages the initial splash screen display and transitions
+ * to the main navigation graph once the splash animation is complete.
+ */
+@Composable
+private fun MainContent() {
+	var showSplash by remember { mutableStateOf(true) }
+	
+	if (showSplash) {
+		// Show splash screen
+		SplashScreen(
+			onSplashComplete = { showSplash = false }
+		)
+	} else {
+		// Root surface container that fills the entire screen
+		Surface(
+			modifier = Modifier.fillMaxSize(),
+			color = MaterialTheme.colorScheme.background
+		) {
+			// Create and remember the navigation controller
+			// This controller manages navigation between screens
+			val navController = rememberNavController()
+
+			// Set up the navigation graph with all app screens
+			NavGraph(navController = navController)
 		}
 	}
 }

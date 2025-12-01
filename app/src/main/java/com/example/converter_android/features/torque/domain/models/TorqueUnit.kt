@@ -36,14 +36,14 @@ enum class TorqueUnit(
 	val displayNameRes: Int,
 	val conversionFactorToNewtonMeter: Double
 ) {
-	NEWTON_METER(com.example.converter_android.R.string.unit_newton_meter, 1.0),
-	MILLINEWTON_METER(com.example.converter_android.R.string.unit_millinewton_meter, 0.001),
-	KILONEWTON_METER(com.example.converter_android.R.string.unit_kilonewton_meter, 1000.0),
-	DECANEWTON_METER(com.example.converter_android.R.string.unit_decanewton_meter, 10.0),
-	POUND_FOOT(com.example.converter_android.R.string.unit_pound_foot, 1.355818),
-	POUND_INCH(com.example.converter_android.R.string.unit_pound_inch, 0.1129848),
-	OUNCE_INCH(com.example.converter_android.R.string.unit_ounce_inch, 0.00706155),
-	KILOGRAM_FORCE_METER(com.example.converter_android.R.string.unit_kilogram_force_meter, 9.80665),
-	KILOGRAM_FORCE_CENTIMETER(com.example.converter_android.R.string.unit_kilogram_force_centimeter, 0.0980665)
+	NEWTON_METER(com.forestmusic.converter_android.R.string.unit_newton_meter, 1.0),
+	MILLINEWTON_METER(com.forestmusic.converter_android.R.string.unit_millinewton_meter, 0.001),
+	KILONEWTON_METER(com.forestmusic.converter_android.R.string.unit_kilonewton_meter, 1000.0),
+	DECANEWTON_METER(com.forestmusic.converter_android.R.string.unit_decanewton_meter, 10.0),
+	POUND_FOOT(com.forestmusic.converter_android.R.string.unit_pound_foot, 1.355818),
+	POUND_INCH(com.forestmusic.converter_android.R.string.unit_pound_inch, 0.1129848),
+	OUNCE_INCH(com.forestmusic.converter_android.R.string.unit_ounce_inch, 0.00706155),
+	KILOGRAM_FORCE_METER(com.forestmusic.converter_android.R.string.unit_kilogram_force_meter, 9.80665),
+	KILOGRAM_FORCE_CENTIMETER(com.forestmusic.converter_android.R.string.unit_kilogram_force_centimeter, 0.0980665)
 }
 

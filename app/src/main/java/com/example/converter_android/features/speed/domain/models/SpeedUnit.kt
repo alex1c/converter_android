@@ -69,7 +69,7 @@ enum class SpeedUnit(
 	 * 
 	 * Conversion factor: 1.0 (base unit, no conversion needed)
 	 */
-	METER_PER_SECOND(com.example.converter_android.R.string.unit_meter_per_second, 1.0),
+	METER_PER_SECOND(com.forestmusic.converter_android.R.string.unit_meter_per_second, 1.0),
 	
 	/**
 	 * Kilometer per hour (km/h) - Commonly used for road speeds.
@@ -83,7 +83,7 @@ enum class SpeedUnit(
 	 * 100 km/h ≈ 27.78 m/s
 	 * 50 km/h ≈ 13.89 m/s
 	 */
-	KILOMETER_PER_HOUR(com.example.converter_android.R.string.unit_kilometer_per_hour, 0.277778),
+	KILOMETER_PER_HOUR(com.forestmusic.converter_android.R.string.unit_kilometer_per_hour, 0.277778),
 	
 	/**
 	 * Mile per hour (mph) - Imperial unit for road speeds.
@@ -97,7 +97,7 @@ enum class SpeedUnit(
 	 * 60 mph ≈ 26.82 m/s ≈ 96.56 km/h
 	 * 30 mph ≈ 13.41 m/s ≈ 48.28 km/h
 	 */
-	MILE_PER_HOUR(com.example.converter_android.R.string.unit_mile_per_hour, 0.44704),
+	MILE_PER_HOUR(com.forestmusic.converter_android.R.string.unit_mile_per_hour, 0.44704),
 	
 	/**
 	 * Knot (kn) - Navigation unit for maritime and aviation speeds.
@@ -110,7 +110,7 @@ enum class SpeedUnit(
 	 * @example
 	 * 1 knot ≈ 0.514 m/s ≈ 1.852 km/h ≈ 1.151 mph
 	 */
-	KNOT(com.example.converter_android.R.string.unit_knot, 0.514444),
+	KNOT(com.forestmusic.converter_android.R.string.unit_knot, 0.514444),
 	
 	/**
 	 * Foot per second (ft/s) - Imperial unit for speed.
@@ -120,6 +120,6 @@ enum class SpeedUnit(
 	 * 
 	 * Conversion factor: 0.3048 (1 ft/s = 0.3048 m/s, exactly)
 	 */
-	FOOT_PER_SECOND(com.example.converter_android.R.string.unit_foot_per_second, 0.3048)
+	FOOT_PER_SECOND(com.forestmusic.converter_android.R.string.unit_foot_per_second, 0.3048)
 }
 

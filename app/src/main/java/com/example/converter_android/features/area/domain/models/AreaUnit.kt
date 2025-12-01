@@ -72,7 +72,7 @@ enum class AreaUnit(
 	 * 
 	 * Conversion factor: 1.0 (base unit, no conversion needed)
 	 */
-	SQUARE_METER(com.example.converter_android.R.string.unit_square_meter, 1.0),
+	SQUARE_METER(com.forestmusic.converter_android.R.string.unit_square_meter, 1.0),
 	
 	/**
 	 * Square Kilometer (km²) - One million square meters.
@@ -82,7 +82,7 @@ enum class AreaUnit(
 	 * 
 	 * Conversion factor: 1,000,000.0 (1 km² = 1,000,000 m²)
 	 */
-	SQUARE_KILOMETER(com.example.converter_android.R.string.unit_square_kilometer, 1_000_000.0),
+	SQUARE_KILOMETER(com.forestmusic.converter_android.R.string.unit_square_kilometer, 1_000_000.0),
 	
 	/**
 	 * Square Centimeter (cm²) - One ten-thousandth of a square meter.
@@ -92,7 +92,7 @@ enum class AreaUnit(
 	 * 
 	 * Conversion factor: 0.0001 (1 cm² = 0.0001 m²)
 	 */
-	SQUARE_CENTIMETER(com.example.converter_android.R.string.unit_square_centimeter, 0.0001),
+	SQUARE_CENTIMETER(com.forestmusic.converter_android.R.string.unit_square_centimeter, 0.0001),
 	
 	/**
 	 * Square Millimeter (mm²) - One millionth of a square meter.
@@ -102,7 +102,7 @@ enum class AreaUnit(
 	 * 
 	 * Conversion factor: 0.000001 (1 mm² = 0.000001 m²)
 	 */
-	SQUARE_MILLIMETER(com.example.converter_android.R.string.unit_square_millimeter, 0.000001),
+	SQUARE_MILLIMETER(com.forestmusic.converter_android.R.string.unit_square_millimeter, 0.000001),
 	
 	/**
 	 * Hectare (ha) - Metric unit for large land areas.
@@ -112,7 +112,7 @@ enum class AreaUnit(
 	 * 
 	 * Conversion factor: 10,000.0 (1 ha = 10,000 m², exactly)
 	 */
-	HECTARE(com.example.converter_android.R.string.unit_hectare, 10_000.0),
+	HECTARE(com.forestmusic.converter_android.R.string.unit_hectare, 10_000.0),
 	
 	/**
 	 * Are (a) - Metric unit for land area.
@@ -122,7 +122,7 @@ enum class AreaUnit(
 	 * 
 	 * Conversion factor: 100.0 (1 a = 100 m², exactly)
 	 */
-	ARE(com.example.converter_android.R.string.unit_are, 100.0),
+	ARE(com.forestmusic.converter_android.R.string.unit_are, 100.0),
 	
 	/**
 	 * Square Foot (ft²) - Imperial unit for area.
@@ -132,7 +132,7 @@ enum class AreaUnit(
 	 * 
 	 * Conversion factor: 0.092903 (1 ft² ≈ 0.092903 m²)
 	 */
-	SQUARE_FOOT(com.example.converter_android.R.string.unit_square_foot, 0.092903),
+	SQUARE_FOOT(com.forestmusic.converter_android.R.string.unit_square_foot, 0.092903),
 	
 	/**
 	 * Square Yard (yd²) - Imperial unit for area.
@@ -142,7 +142,7 @@ enum class AreaUnit(
 	 * 
 	 * Conversion factor: 0.836127 (1 yd² ≈ 0.836127 m²)
 	 */
-	SQUARE_YARD(com.example.converter_android.R.string.unit_square_yard, 0.836127),
+	SQUARE_YARD(com.forestmusic.converter_android.R.string.unit_square_yard, 0.836127),
 	
 	/**
 	 * Acre (ac) - Imperial unit for large land areas.
@@ -153,6 +153,6 @@ enum class AreaUnit(
 	 * 
 	 * Conversion factor: 4046.8564224 (1 ac ≈ 4046.8564224 m²)
 	 */
-	ACRE(com.example.converter_android.R.string.unit_acre, 4046.8564224)
+	ACRE(com.forestmusic.converter_android.R.string.unit_acre, 4046.8564224)
 }
 

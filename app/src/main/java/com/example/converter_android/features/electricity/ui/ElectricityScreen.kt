@@ -106,7 +106,7 @@ fun ElectricityScreen(
 				}
 				// Centered title text
 				Text(
-					text = stringResource(com.example.converter_android.R.string.electricity_converter_title),
+					text = stringResource(com.forestmusic.converter_android.R.string.electricity_converter_title),
 					style = MaterialTheme.typography.headlineMedium,
 					fontWeight = FontWeight.Bold,
 					modifier = Modifier
@@ -131,13 +131,13 @@ fun ElectricityScreen(
 				Tab(
 					selected = uiState.selectedTab == 0,
 					onClick = { viewModel.updateTab(0) },
-					text = { Text(stringResource(com.example.converter_android.R.string.tab_conversion)) }
+					text = { Text(stringResource(com.forestmusic.converter_android.R.string.tab_conversion)) }
 				)
 				// Calculators tab
 				Tab(
 					selected = uiState.selectedTab == 1,
 					onClick = { viewModel.updateTab(1) },
-					text = { Text(stringResource(com.example.converter_android.R.string.tab_calculators)) }
+					text = { Text(stringResource(com.forestmusic.converter_android.R.string.tab_calculators)) }
 				)
 			}
 
@@ -197,7 +197,7 @@ private fun ConversionTab(
 					viewModel.updateInputValue(newValue)
 				}
 			},
-			label = { Text(stringResource(com.example.converter_android.R.string.enter_value)) },
+			label = { Text(stringResource(com.forestmusic.converter_android.R.string.enter_value)) },
 			// Use decimal keyboard for numeric input (includes digits and decimal point)
 			keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(
 				keyboardType = KeyboardType.Decimal
@@ -215,7 +215,7 @@ private fun ConversionTab(
 			// "From" unit dropdown - dynamically shows units based on selected quantity type
 			when (uiState.selectedQuantityType) {
 				QuantityType.VOLTAGE -> UnitDropdown(
-					label = stringResource(com.example.converter_android.R.string.from_unit),
+					label = stringResource(com.forestmusic.converter_android.R.string.from_unit),
 					selectedUnit = uiState.voltageFromUnit,
 					units = uiState.voltageAvailableUnits,
 					onUnitSelected = { viewModel.updateVoltageFromUnit(it) },
@@ -223,7 +223,7 @@ private fun ConversionTab(
 					modifier = Modifier.weight(1f) // Take equal space with "to" unit dropdown
 				)
 				QuantityType.CURRENT -> UnitDropdown(
-					label = stringResource(com.example.converter_android.R.string.from_unit),
+					label = stringResource(com.forestmusic.converter_android.R.string.from_unit),
 					selectedUnit = uiState.currentFromUnit,
 					units = uiState.currentAvailableUnits,
 					onUnitSelected = { viewModel.updateCurrentFromUnit(it) },
@@ -231,7 +231,7 @@ private fun ConversionTab(
 					modifier = Modifier.weight(1f)
 				)
 				QuantityType.RESISTANCE -> UnitDropdown(
-					label = stringResource(com.example.converter_android.R.string.from_unit),
+					label = stringResource(com.forestmusic.converter_android.R.string.from_unit),
 					selectedUnit = uiState.resistanceFromUnit,
 					units = uiState.resistanceAvailableUnits,
 					onUnitSelected = { viewModel.updateResistanceFromUnit(it) },
@@ -256,7 +256,7 @@ private fun ConversionTab(
 			// "To" unit dropdown - dynamically shows units based on selected quantity type
 			when (uiState.selectedQuantityType) {
 				QuantityType.VOLTAGE -> UnitDropdown(
-					label = stringResource(com.example.converter_android.R.string.to_unit),
+					label = stringResource(com.forestmusic.converter_android.R.string.to_unit),
 					selectedUnit = uiState.voltageToUnit,
 					units = uiState.voltageAvailableUnits,
 					onUnitSelected = { viewModel.updateVoltageToUnit(it) },
@@ -264,7 +264,7 @@ private fun ConversionTab(
 					modifier = Modifier.weight(1f)
 				)
 				QuantityType.CURRENT -> UnitDropdown(
-					label = stringResource(com.example.converter_android.R.string.to_unit),
+					label = stringResource(com.forestmusic.converter_android.R.string.to_unit),
 					selectedUnit = uiState.currentToUnit,
 					units = uiState.currentAvailableUnits,
 					onUnitSelected = { viewModel.updateCurrentToUnit(it) },
@@ -272,7 +272,7 @@ private fun ConversionTab(
 					modifier = Modifier.weight(1f)
 				)
 				QuantityType.RESISTANCE -> UnitDropdown(
-					label = stringResource(com.example.converter_android.R.string.to_unit),
+					label = stringResource(com.forestmusic.converter_android.R.string.to_unit),
 					selectedUnit = uiState.resistanceToUnit,
 					units = uiState.resistanceAvailableUnits,
 					onUnitSelected = { viewModel.updateResistanceToUnit(it) },
@@ -298,7 +298,7 @@ private fun ConversionTab(
 			) {
 				// "Result" label
 				Text(
-					text = stringResource(com.example.converter_android.R.string.result),
+					text = stringResource(com.forestmusic.converter_android.R.string.result),
 					style = MaterialTheme.typography.titleMedium,
 					color = MaterialTheme.colorScheme.onPrimaryContainer
 				)
@@ -377,12 +377,12 @@ private fun CalculatorsTab(
 		// Determine input field labels based on selected calculator type
 		// Each calculator requires different inputs (V, I, or R)
 		val (label1, label2) = when (uiState.selectedCalculator) {
-			CalculatorType.VOLTAGE -> stringResource(com.example.converter_android.R.string.calc_input_current) to stringResource(com.example.converter_android.R.string.calc_input_resistance)
-			CalculatorType.CURRENT -> stringResource(com.example.converter_android.R.string.calc_input_voltage) to stringResource(com.example.converter_android.R.string.calc_input_resistance)
-			CalculatorType.RESISTANCE -> stringResource(com.example.converter_android.R.string.calc_input_voltage) to stringResource(com.example.converter_android.R.string.calc_input_current)
-			CalculatorType.POWER_VI -> stringResource(com.example.converter_android.R.string.calc_input_voltage) to stringResource(com.example.converter_android.R.string.calc_input_current)
-			CalculatorType.POWER_IR -> stringResource(com.example.converter_android.R.string.calc_input_current) to stringResource(com.example.converter_android.R.string.calc_input_resistance)
-			CalculatorType.POWER_VR -> stringResource(com.example.converter_android.R.string.calc_input_voltage) to stringResource(com.example.converter_android.R.string.calc_input_resistance)
+			CalculatorType.VOLTAGE -> stringResource(com.forestmusic.converter_android.R.string.calc_input_current) to stringResource(com.forestmusic.converter_android.R.string.calc_input_resistance)
+			CalculatorType.CURRENT -> stringResource(com.forestmusic.converter_android.R.string.calc_input_voltage) to stringResource(com.forestmusic.converter_android.R.string.calc_input_resistance)
+			CalculatorType.RESISTANCE -> stringResource(com.forestmusic.converter_android.R.string.calc_input_voltage) to stringResource(com.forestmusic.converter_android.R.string.calc_input_current)
+			CalculatorType.POWER_VI -> stringResource(com.forestmusic.converter_android.R.string.calc_input_voltage) to stringResource(com.forestmusic.converter_android.R.string.calc_input_current)
+			CalculatorType.POWER_IR -> stringResource(com.forestmusic.converter_android.R.string.calc_input_current) to stringResource(com.forestmusic.converter_android.R.string.calc_input_resistance)
+			CalculatorType.POWER_VR -> stringResource(com.forestmusic.converter_android.R.string.calc_input_voltage) to stringResource(com.forestmusic.converter_android.R.string.calc_input_resistance)
 		}
 
 		// First input field: Label changes based on calculator type
@@ -414,7 +414,7 @@ private fun CalculatorsTab(
 			onClick = { viewModel.calculate() },
 			modifier = Modifier.fillMaxWidth()
 		) {
-			Text(stringResource(com.example.converter_android.R.string.calculate))
+			Text(stringResource(com.forestmusic.converter_android.R.string.calculate))
 		}
 
 		// Result card: Only displayed when calculation result is available
@@ -434,7 +434,7 @@ private fun CalculatorsTab(
 				) {
 					// "Result" label
 					Text(
-						text = stringResource(com.example.converter_android.R.string.result),
+						text = stringResource(com.forestmusic.converter_android.R.string.result),
 						style = MaterialTheme.typography.titleMedium,
 						color = MaterialTheme.colorScheme.onPrimaryContainer
 					)
@@ -508,9 +508,9 @@ private fun QuantityTypeSelector(
 			) {
 				Text(
 					text = when (type) {
-						QuantityType.VOLTAGE -> context.getString(com.example.converter_android.R.string.voltage)
-						QuantityType.CURRENT -> context.getString(com.example.converter_android.R.string.current)
-						QuantityType.RESISTANCE -> context.getString(com.example.converter_android.R.string.resistance)
+						QuantityType.VOLTAGE -> context.getString(com.forestmusic.converter_android.R.string.voltage)
+						QuantityType.CURRENT -> context.getString(com.forestmusic.converter_android.R.string.current)
+						QuantityType.RESISTANCE -> context.getString(com.forestmusic.converter_android.R.string.resistance)
 					}
 				)
 			}
@@ -575,12 +575,12 @@ private fun CalculatorTypeSelector(
 				// Display calculator name with formula
 				Text(
 					text = when (type) {
-						CalculatorType.VOLTAGE -> context.getString(com.example.converter_android.R.string.calc_voltage)
-						CalculatorType.CURRENT -> context.getString(com.example.converter_android.R.string.calc_current)
-						CalculatorType.RESISTANCE -> context.getString(com.example.converter_android.R.string.calc_resistance)
-						CalculatorType.POWER_VI -> context.getString(com.example.converter_android.R.string.calc_power_vi)
-						CalculatorType.POWER_IR -> context.getString(com.example.converter_android.R.string.calc_power_ir)
-						CalculatorType.POWER_VR -> context.getString(com.example.converter_android.R.string.calc_power_vr)
+						CalculatorType.VOLTAGE -> context.getString(com.forestmusic.converter_android.R.string.calc_voltage)
+						CalculatorType.CURRENT -> context.getString(com.forestmusic.converter_android.R.string.calc_current)
+						CalculatorType.RESISTANCE -> context.getString(com.forestmusic.converter_android.R.string.calc_resistance)
+						CalculatorType.POWER_VI -> context.getString(com.forestmusic.converter_android.R.string.calc_power_vi)
+						CalculatorType.POWER_IR -> context.getString(com.forestmusic.converter_android.R.string.calc_power_ir)
+						CalculatorType.POWER_VR -> context.getString(com.forestmusic.converter_android.R.string.calc_power_vr)
 					},
 					modifier = Modifier.padding(16.dp),
 					style = MaterialTheme.typography.bodyLarge

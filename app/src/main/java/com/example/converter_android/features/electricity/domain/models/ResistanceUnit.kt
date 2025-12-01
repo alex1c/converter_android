@@ -57,7 +57,7 @@ enum class ResistanceUnit(
 	 * 
 	 * Conversion factor: 1.0 (base unit, no conversion needed)
 	 */
-	OHM(com.example.converter_android.R.string.unit_ohm, 1.0),
+	OHM(com.forestmusic.converter_android.R.string.unit_ohm, 1.0),
 	
 	/**
 	 * Kiloohm (kΩ) - One thousand ohms.
@@ -71,7 +71,7 @@ enum class ResistanceUnit(
 	 * 1 kΩ = 1000 Ω
 	 * 5 kΩ = 5000 Ω
 	 */
-	KILOOHM(com.example.converter_android.R.string.unit_kiloohm, 1000.0),
+	KILOOHM(com.forestmusic.converter_android.R.string.unit_kiloohm, 1000.0),
 	
 	/**
 	 * Megaohm (MΩ) - One million ohms.
@@ -85,6 +85,6 @@ enum class ResistanceUnit(
 	 * 1 MΩ = 1,000,000 Ω
 	 * 0.5 MΩ = 500,000 Ω
 	 */
-	MEGAOHM(com.example.converter_android.R.string.unit_megaohm, 1_000_000.0)
+	MEGAOHM(com.forestmusic.converter_android.R.string.unit_megaohm, 1_000_000.0)
 }
 

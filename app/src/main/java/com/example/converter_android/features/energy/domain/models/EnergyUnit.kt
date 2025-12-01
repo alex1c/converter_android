@@ -29,15 +29,15 @@ enum class EnergyUnit(
 	val displayNameRes: Int,
 	val conversionFactorToJoule: Double
 ) {
-	JOULE(com.example.converter_android.R.string.unit_joule, 1.0),
-	KILOJOULE(com.example.converter_android.R.string.unit_kilojoule, 1000.0),
-	MEGAJOULE(com.example.converter_android.R.string.unit_megajoule, 1_000_000.0),
-	WATT_HOUR(com.example.converter_android.R.string.unit_watt_hour, 3600.0),
-	KILOWATT_HOUR(com.example.converter_android.R.string.unit_kilowatt_hour, 3_600_000.0),
-	CALORIE(com.example.converter_android.R.string.unit_calorie, 4.184),
-	KILOCALORIE(com.example.converter_android.R.string.unit_kilocalorie, 4184.0),
-	BTU(com.example.converter_android.R.string.unit_btu, 1055.06),
-	ERG(com.example.converter_android.R.string.unit_erg, 0.0000001),
-	ELECTRON_VOLT(com.example.converter_android.R.string.unit_electron_volt, 1.602176634e-19)
+	JOULE(com.forestmusic.converter_android.R.string.unit_joule, 1.0),
+	KILOJOULE(com.forestmusic.converter_android.R.string.unit_kilojoule, 1000.0),
+	MEGAJOULE(com.forestmusic.converter_android.R.string.unit_megajoule, 1_000_000.0),
+	WATT_HOUR(com.forestmusic.converter_android.R.string.unit_watt_hour, 3600.0),
+	KILOWATT_HOUR(com.forestmusic.converter_android.R.string.unit_kilowatt_hour, 3_600_000.0),
+	CALORIE(com.forestmusic.converter_android.R.string.unit_calorie, 4.184),
+	KILOCALORIE(com.forestmusic.converter_android.R.string.unit_kilocalorie, 4184.0),
+	BTU(com.forestmusic.converter_android.R.string.unit_btu, 1055.06),
+	ERG(com.forestmusic.converter_android.R.string.unit_erg, 0.0000001),
+	ELECTRON_VOLT(com.forestmusic.converter_android.R.string.unit_electron_volt, 1.602176634e-19)
 }
 

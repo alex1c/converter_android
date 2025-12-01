@@ -70,7 +70,7 @@ enum class VolumeUnit(
 	 * 
 	 * Conversion factor: 1.0 (base unit, no conversion needed)
 	 */
-	LITER(com.example.converter_android.R.string.unit_liter, 1.0),
+	LITER(com.forestmusic.converter_android.R.string.unit_liter, 1.0),
 	
 	/**
 	 * Milliliter (mL) - One thousandth of a liter.
@@ -80,7 +80,7 @@ enum class VolumeUnit(
 	 * 
 	 * Conversion factor: 0.001 (1 mL = 0.001 L)
 	 */
-	MILLILITER(com.example.converter_android.R.string.unit_milliliter, 0.001),
+	MILLILITER(com.forestmusic.converter_android.R.string.unit_milliliter, 0.001),
 	
 	/**
 	 * Cubic Meter (m³) - One thousand liters.
@@ -90,7 +90,7 @@ enum class VolumeUnit(
 	 * 
 	 * Conversion factor: 1000.0 (1 m³ = 1000 L)
 	 */
-	CUBIC_METER(com.example.converter_android.R.string.unit_cubic_meter, 1000.0),
+	CUBIC_METER(com.forestmusic.converter_android.R.string.unit_cubic_meter, 1000.0),
 	
 	/**
 	 * Cubic Centimeter (cm³) - One thousandth of a liter.
@@ -100,7 +100,7 @@ enum class VolumeUnit(
 	 * 
 	 * Conversion factor: 0.001 (1 cm³ = 0.001 L)
 	 */
-	CUBIC_CENTIMETER(com.example.converter_android.R.string.unit_cubic_centimeter, 0.001),
+	CUBIC_CENTIMETER(com.forestmusic.converter_android.R.string.unit_cubic_centimeter, 0.001),
 	
 	/**
 	 * US Gallon (US gal) - US liquid gallon.
@@ -110,7 +110,7 @@ enum class VolumeUnit(
 	 * 
 	 * Conversion factor: 3.78541 (1 US gal ≈ 3.78541 L)
 	 */
-	GALLON_US(com.example.converter_android.R.string.unit_gallon_us, 3.78541),
+	GALLON_US(com.forestmusic.converter_android.R.string.unit_gallon_us, 3.78541),
 	
 	/**
 	 * UK/Imperial Gallon (UK gal) - Imperial gallon.
@@ -120,7 +120,7 @@ enum class VolumeUnit(
 	 * 
 	 * Conversion factor: 4.54609 (1 UK gal ≈ 4.54609 L)
 	 */
-	GALLON_UK(com.example.converter_android.R.string.unit_gallon_uk, 4.54609),
+	GALLON_UK(com.forestmusic.converter_android.R.string.unit_gallon_uk, 4.54609),
 	
 	/**
 	 * Pint (pt) - US liquid pint.
@@ -130,7 +130,7 @@ enum class VolumeUnit(
 	 * 
 	 * Conversion factor: 0.473176 (1 pt ≈ 0.473176 L)
 	 */
-	PINT(com.example.converter_android.R.string.unit_pint, 0.473176),
+	PINT(com.forestmusic.converter_android.R.string.unit_pint, 0.473176),
 	
 	/**
 	 * Cup (cup) - US customary cup.
@@ -140,7 +140,7 @@ enum class VolumeUnit(
 	 * 
 	 * Conversion factor: 0.236588 (1 cup ≈ 0.236588 L)
 	 */
-	CUP(com.example.converter_android.R.string.unit_cup, 0.236588),
+	CUP(com.forestmusic.converter_android.R.string.unit_cup, 0.236588),
 	
 	/**
 	 * Tablespoon (tbsp) - US tablespoon.
@@ -150,7 +150,7 @@ enum class VolumeUnit(
 	 * 
 	 * Conversion factor: 0.0147868 (1 tbsp ≈ 0.0147868 L)
 	 */
-	TABLESPOON(com.example.converter_android.R.string.unit_tablespoon, 0.0147868),
+	TABLESPOON(com.forestmusic.converter_android.R.string.unit_tablespoon, 0.0147868),
 	
 	/**
 	 * Teaspoon (tsp) - US teaspoon.
@@ -160,6 +160,6 @@ enum class VolumeUnit(
 	 * 
 	 * Conversion factor: 0.00492892 (1 tsp ≈ 0.00492892 L)
 	 */
-	TEASPOON(com.example.converter_android.R.string.unit_teaspoon, 0.00492892)
+	TEASPOON(com.forestmusic.converter_android.R.string.unit_teaspoon, 0.00492892)
 }
 

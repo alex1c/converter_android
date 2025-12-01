@@ -66,7 +66,7 @@ enum class TemperatureUnit(
 	 * - To Fahrenheit: F = C × 9/5 + 32
 	 * - To Kelvin: K = C + 273.15
 	 */
-	CELSIUS(com.example.converter_android.R.string.unit_celsius),
+	CELSIUS(com.forestmusic.converter_android.R.string.unit_celsius),
 	
 	/**
 	 * Fahrenheit (°F) - Imperial temperature unit.
@@ -82,7 +82,7 @@ enum class TemperatureUnit(
 	 * - To Celsius: C = (F - 32) × 5/9
 	 * - To Kelvin: K = (F - 32) × 5/9 + 273.15
 	 */
-	FAHRENHEIT(com.example.converter_android.R.string.unit_fahrenheit),
+	FAHRENHEIT(com.forestmusic.converter_android.R.string.unit_fahrenheit),
 	
 	/**
 	 * Kelvin (K) - SI base unit for thermodynamic temperature.
@@ -101,6 +101,6 @@ enum class TemperatureUnit(
 	 * - To Celsius: C = K - 273.15
 	 * - To Fahrenheit: F = (K - 273.15) × 9/5 + 32
 	 */
-	KELVIN(com.example.converter_android.R.string.unit_kelvin)
+	KELVIN(com.forestmusic.converter_android.R.string.unit_kelvin)
 }
 

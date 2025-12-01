@@ -36,15 +36,15 @@ enum class PressureUnit(
 	val displayNameRes: Int,
 	val conversionFactorToPascal: Double
 ) {
-	PASCAL(com.example.converter_android.R.string.unit_pascal, 1.0),
-	KILOPASCAL(com.example.converter_android.R.string.unit_kilopascal, 1000.0),
-	MEGAPASCAL(com.example.converter_android.R.string.unit_megapascal, 1_000_000.0),
-	BAR(com.example.converter_android.R.string.unit_bar, 100_000.0),
-	MILLIBAR(com.example.converter_android.R.string.unit_millibar, 100.0),
-	ATMOSPHERE_TECHNICAL(com.example.converter_android.R.string.unit_atmosphere_technical, 98_066.5),
-	ATMOSPHERE_STANDARD(com.example.converter_android.R.string.unit_atmosphere_standard, 101_325.0),
-	MILLIMETER_MERCURY(com.example.converter_android.R.string.unit_millimeter_mercury, 133.322),
-	INCH_MERCURY(com.example.converter_android.R.string.unit_inch_mercury, 3386.39),
-	PSI(com.example.converter_android.R.string.unit_psi, 6894.76)
+	PASCAL(com.forestmusic.converter_android.R.string.unit_pascal, 1.0),
+	KILOPASCAL(com.forestmusic.converter_android.R.string.unit_kilopascal, 1000.0),
+	MEGAPASCAL(com.forestmusic.converter_android.R.string.unit_megapascal, 1_000_000.0),
+	BAR(com.forestmusic.converter_android.R.string.unit_bar, 100_000.0),
+	MILLIBAR(com.forestmusic.converter_android.R.string.unit_millibar, 100.0),
+	ATMOSPHERE_TECHNICAL(com.forestmusic.converter_android.R.string.unit_atmosphere_technical, 98_066.5),
+	ATMOSPHERE_STANDARD(com.forestmusic.converter_android.R.string.unit_atmosphere_standard, 101_325.0),
+	MILLIMETER_MERCURY(com.forestmusic.converter_android.R.string.unit_millimeter_mercury, 133.322),
+	INCH_MERCURY(com.forestmusic.converter_android.R.string.unit_inch_mercury, 3386.39),
+	PSI(com.forestmusic.converter_android.R.string.unit_psi, 6894.76)
 }
 

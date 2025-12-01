@@ -67,7 +67,7 @@ enum class LengthUnit(
 	 * 
 	 * Conversion factor: 1.0 (base unit, no conversion needed)
 	 */
-	METER(com.example.converter_android.R.string.unit_meter, 1.0),
+	METER(com.forestmusic.converter_android.R.string.unit_meter, 1.0),
 	
 	/**
 	 * Kilometer (km) - One thousand meters.
@@ -77,7 +77,7 @@ enum class LengthUnit(
 	 * 
 	 * Conversion factor: 1000.0 (1 km = 1000 m)
 	 */
-	KILOMETER(com.example.converter_android.R.string.unit_kilometer, 1000.0),
+	KILOMETER(com.forestmusic.converter_android.R.string.unit_kilometer, 1000.0),
 	
 	/**
 	 * Centimeter (cm) - One hundredth of a meter.
@@ -87,7 +87,7 @@ enum class LengthUnit(
 	 * 
 	 * Conversion factor: 0.01 (1 cm = 0.01 m)
 	 */
-	CENTIMETER(com.example.converter_android.R.string.unit_centimeter, 0.01),
+	CENTIMETER(com.forestmusic.converter_android.R.string.unit_centimeter, 0.01),
 	
 	/**
 	 * Millimeter (mm) - One thousandth of a meter.
@@ -97,7 +97,7 @@ enum class LengthUnit(
 	 * 
 	 * Conversion factor: 0.001 (1 mm = 0.001 m)
 	 */
-	MILLIMETER(com.example.converter_android.R.string.unit_millimeter, 0.001),
+	MILLIMETER(com.forestmusic.converter_android.R.string.unit_millimeter, 0.001),
 	
 	/**
 	 * Mile (mi) - Imperial unit of length.
@@ -108,7 +108,7 @@ enum class LengthUnit(
 	 * 
 	 * Conversion factor: 1609.344 (1 mi = 1609.344 m)
 	 */
-	MILE(com.example.converter_android.R.string.unit_mile, 1609.344),
+	MILE(com.forestmusic.converter_android.R.string.unit_mile, 1609.344),
 	
 	/**
 	 * Yard (yd) - Imperial unit of length.
@@ -118,7 +118,7 @@ enum class LengthUnit(
 	 * 
 	 * Conversion factor: 0.9144 (1 yd = 0.9144 m)
 	 */
-	YARD(com.example.converter_android.R.string.unit_yard, 0.9144),
+	YARD(com.forestmusic.converter_android.R.string.unit_yard, 0.9144),
 	
 	/**
 	 * Foot (ft) - Imperial unit of length.
@@ -128,7 +128,7 @@ enum class LengthUnit(
 	 * 
 	 * Conversion factor: 0.3048 (1 ft = 0.3048 m)
 	 */
-	FOOT(com.example.converter_android.R.string.unit_foot, 0.3048),
+	FOOT(com.forestmusic.converter_android.R.string.unit_foot, 0.3048),
 	
 	/**
 	 * Inch (in) - Imperial unit of length.
@@ -138,7 +138,7 @@ enum class LengthUnit(
 	 * 
 	 * Conversion factor: 0.0254 (1 in = 0.0254 m)
 	 */
-	INCH(com.example.converter_android.R.string.unit_inch, 0.0254),
+	INCH(com.forestmusic.converter_android.R.string.unit_inch, 0.0254),
 	
 	/**
 	 * Nautical Mile (nmi) - Navigation unit of length.
@@ -149,6 +149,6 @@ enum class LengthUnit(
 	 * 
 	 * Conversion factor: 1852.0 (1 nmi = 1852 m, exactly)
 	 */
-	NAUTICAL_MILE(com.example.converter_android.R.string.unit_nautical_mile, 1852.0)
+	NAUTICAL_MILE(com.forestmusic.converter_android.R.string.unit_nautical_mile, 1852.0)
 }
 

@@ -1,5 +1,6 @@
 package com.example.converter_android.presentation.categories
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -19,11 +20,16 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.example.converter_android.core.utils.Constants
 
 /**
  * Main screen displaying all converter categories.
@@ -37,6 +43,7 @@ import androidx.compose.ui.unit.dp
  * - Shows all converter categories in a 2-column grid
  * - Each category is represented by a card with an icon and title
  * - Cards are clickable and trigger navigation to the selected category
+ * - Cards feature gradient backgrounds for visual appeal
  * 
  * Layout:
  * - Uses a [Column] as the root container for vertical arrangement
@@ -67,7 +74,7 @@ fun CategoriesScreen(
 	Column(
 		modifier = modifier
 			.fillMaxSize()
-			.padding(16.dp),
+			.padding(Constants.SPACING_MD.dp),
 		horizontalAlignment = Alignment.CenterHorizontally
 	) {
 		// Application title displayed at the top
@@ -77,7 +84,10 @@ fun CategoriesScreen(
 			fontWeight = FontWeight.Bold,
 			modifier = Modifier
 				.fillMaxWidth()
-				.padding(top = 24.dp, bottom = 32.dp),
+				.padding(
+					top = Constants.SPACING_LG.dp,
+					bottom = Constants.SPACING_XL.dp
+				),
 			textAlign = TextAlign.Center
 		)
 
@@ -85,9 +95,9 @@ fun CategoriesScreen(
 		// Uses LazyVerticalGrid for efficient rendering of potentially large lists
 		LazyVerticalGrid(
 			columns = GridCells.Fixed(2), // 2 columns for optimal space usage
-			horizontalArrangement = Arrangement.spacedBy(16.dp), // Space between columns
-			verticalArrangement = Arrangement.spacedBy(16.dp), // Space between rows
-			contentPadding = PaddingValues(bottom = 16.dp) // Bottom padding for scroll
+			horizontalArrangement = Arrangement.spacedBy(Constants.SPACING_MD.dp), // Space between columns
+			verticalArrangement = Arrangement.spacedBy(Constants.SPACING_MD.dp), // Space between rows
+			contentPadding = PaddingValues(bottom = Constants.SPACING_MD.dp) // Bottom padding for scroll
 		) {
 			// Create a card for each category in the data list
 			items(CategoriesData.categories) { category ->
@@ -109,15 +119,17 @@ fun CategoriesScreen(
  * 
  * Design:
  * - Uses Material3 Card component for consistent styling
- * - Fixed height (140.dp) for uniform grid appearance
- * - Primary container color for visual emphasis
- * - Elevation for depth perception
+ * - Fixed height (160.dp) for uniform grid appearance
+ * - Gradient background for visual appeal
+ * - Improved elevation for depth perception
  * - Centered icon and title layout
+ * - Larger icons (56.dp) for better visibility
  * 
  * Interaction:
  * - Entire card is clickable
  * - Click triggers the [onClick] callback
  * - Uses Material ripple effect for visual feedback
+ * - Pressed elevation for tactile feedback
  * 
  * Accessibility:
  * - Icon has content description for screen readers
@@ -139,22 +151,38 @@ private fun CategoryCard(
 	onClick: () -> Unit,
 	modifier: Modifier = Modifier
 ) {
+	// Generate gradient colors based on category index for variety
+	val colorScheme = MaterialTheme.colorScheme
+	val gradientColors = remember(category.id, colorScheme) {
+		val baseColor = colorScheme.primaryContainer
+		val variantColor = colorScheme.primary.copy(alpha = 0.3f)
+		listOf(baseColor, variantColor)
+	}
+
 	// Material3 Card component with clickable modifier
 	Card(
 		modifier = modifier
 			.fillMaxWidth()
-			.height(140.dp) // Fixed height for uniform grid
+			.height(160.dp) // Increased height for better proportions
 			.clickable { onClick() }, // Make entire card clickable
-		elevation = CardDefaults.cardElevation(defaultElevation = 4.dp), // Subtle shadow
+		elevation = CardDefaults.cardElevation(
+			defaultElevation = 2.dp, // Reduced for modern look
+			pressedElevation = 8.dp // Increased on press for feedback
+		),
 		colors = CardDefaults.cardColors(
-			containerColor = MaterialTheme.colorScheme.primaryContainer // Primary color for emphasis
+			containerColor = Color.Transparent // Transparent to show gradient
 		)
 	) {
-		// Box container for centering content
+		// Box with gradient background
 		Box(
 			modifier = Modifier
 				.fillMaxSize()
-				.padding(16.dp),
+				.background(
+					brush = Brush.verticalGradient(
+						colors = gradientColors
+					)
+				)
+				.padding(Constants.SPACING_MD.dp),
 			contentAlignment = Alignment.Center
 		) {
 			// Column for vertical arrangement of icon and title
@@ -162,11 +190,11 @@ private fun CategoryCard(
 				horizontalAlignment = Alignment.CenterHorizontally,
 				verticalArrangement = Arrangement.Center
 			) {
-				// Category icon
+				// Category icon - larger size for better visibility
 				Icon(
 					imageVector = category.icon,
 					contentDescription = category.title, // Accessibility: describe the icon
-					modifier = Modifier.size(48.dp), // Fixed icon size
+					modifier = Modifier.size(56.dp), // Increased icon size
 					tint = MaterialTheme.colorScheme.onPrimaryContainer // Icon color
 				)
 				// Category title
@@ -176,10 +204,9 @@ private fun CategoryCard(
 					fontWeight = FontWeight.Bold,
 					color = MaterialTheme.colorScheme.onPrimaryContainer,
 					textAlign = TextAlign.Center,
-					modifier = Modifier.padding(top = 12.dp) // Space between icon and title
+					modifier = Modifier.padding(top = Constants.SPACING_SM.dp) // Space between icon and title
 				)
 			}
 		}
 	}
 }
-

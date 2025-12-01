@@ -33,11 +33,11 @@ enum class AngleUnit(
 	val displayNameRes: Int,
 	val conversionFactorToDegree: Double
 ) {
-	DEGREE(com.example.converter_android.R.string.unit_degree, 1.0),
-	RADIAN(com.example.converter_android.R.string.unit_radian, 180.0 / PI),
-	GRAD(com.example.converter_android.R.string.unit_grad, 0.9),
-	ARC_MINUTE(com.example.converter_android.R.string.unit_arc_minute, 1.0 / 60.0),
-	ARC_SECOND(com.example.converter_android.R.string.unit_arc_second, 1.0 / 3600.0),
-	TURN(com.example.converter_android.R.string.unit_turn, 360.0)
+	DEGREE(com.forestmusic.converter_android.R.string.unit_degree, 1.0),
+	RADIAN(com.forestmusic.converter_android.R.string.unit_radian, 180.0 / PI),
+	GRAD(com.forestmusic.converter_android.R.string.unit_grad, 0.9),
+	ARC_MINUTE(com.forestmusic.converter_android.R.string.unit_arc_minute, 1.0 / 60.0),
+	ARC_SECOND(com.forestmusic.converter_android.R.string.unit_arc_second, 1.0 / 3600.0),
+	TURN(com.forestmusic.converter_android.R.string.unit_turn, 360.0)
 }
 

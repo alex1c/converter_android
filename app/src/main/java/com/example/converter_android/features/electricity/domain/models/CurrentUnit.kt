@@ -53,7 +53,7 @@ enum class CurrentUnit(
 	 * 
 	 * Conversion factor: 1.0 (base unit, no conversion needed)
 	 */
-	AMPERE(com.example.converter_android.R.string.unit_ampere, 1.0),
+	AMPERE(com.forestmusic.converter_android.R.string.unit_ampere, 1.0),
 	
 	/**
 	 * Milliampere (mA) - One thousandth of an ampere.
@@ -67,7 +67,7 @@ enum class CurrentUnit(
 	 * 1000 mA = 1 A
 	 * 500 mA = 0.5 A
 	 */
-	MILLIAMPERE(com.example.converter_android.R.string.unit_milliampere, 0.001),
+	MILLIAMPERE(com.forestmusic.converter_android.R.string.unit_milliampere, 0.001),
 	
 	/**
 	 * Kiloampere (kA) - One thousand amperes.
@@ -81,6 +81,6 @@ enum class CurrentUnit(
 	 * 1 kA = 1000 A
 	 * 0.5 kA = 500 A
 	 */
-	KILOAMPERE(com.example.converter_android.R.string.unit_kiloampere, 1000.0)
+	KILOAMPERE(com.forestmusic.converter_android.R.string.unit_kiloampere, 1000.0)
 }
 

@@ -74,7 +74,7 @@ fun PressureScreen(
 				)
 			}
 			Text(
-				text = stringResource(com.example.converter_android.R.string.pressure_converter_title),
+				text = stringResource(com.forestmusic.converter_android.R.string.pressure_converter_title),
 				style = MaterialTheme.typography.headlineMedium,
 				fontWeight = FontWeight.Bold,
 				modifier = Modifier
@@ -93,7 +93,7 @@ fun PressureScreen(
 					viewModel.updateInputValue(newValue)
 				}
 			},
-			label = { Text(stringResource(com.example.converter_android.R.string.enter_value)) },
+			label = { Text(stringResource(com.forestmusic.converter_android.R.string.enter_value)) },
 			keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(
 				keyboardType = KeyboardType.Decimal
 			),
@@ -109,7 +109,7 @@ fun PressureScreen(
 		) {
 			// From unit dropdown
 			UnitDropdown(
-				label = stringResource(com.example.converter_android.R.string.from_unit),
+				label = stringResource(com.forestmusic.converter_android.R.string.from_unit),
 				selectedUnit = uiState.fromUnit,
 				units = uiState.availableUnits,
 				onUnitSelected = { viewModel.updateFromUnit(it) },
@@ -130,7 +130,7 @@ fun PressureScreen(
 
 			// To unit dropdown
 			UnitDropdown(
-				label = stringResource(com.example.converter_android.R.string.to_unit),
+				label = stringResource(com.forestmusic.converter_android.R.string.to_unit),
 				selectedUnit = uiState.toUnit,
 				units = uiState.availableUnits,
 				onUnitSelected = { viewModel.updateToUnit(it) },
@@ -161,7 +161,7 @@ fun PressureScreen(
 					horizontalAlignment = Alignment.CenterHorizontally
 				) {
 					Text(
-						text = stringResource(com.example.converter_android.R.string.result),
+						text = stringResource(com.forestmusic.converter_android.R.string.result),
 						style = MaterialTheme.typography.titleMedium,
 						color = MaterialTheme.colorScheme.onPrimaryContainer
 					)

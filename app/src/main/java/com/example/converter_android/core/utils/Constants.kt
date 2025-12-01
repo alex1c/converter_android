@@ -123,5 +123,42 @@ object Constants {
 	 * @see InputValidator.MIN_SAFE_VALUE
 	 */
 	const val MIN_SAFE_VALUE = -1e15
+
+	// ==================== Spacing Constants ====================
+
+	/**
+	 * Standard spacing unit (4dp).
+	 * 
+	 * Used for small gaps between closely related elements.
+	 */
+	const val SPACING_XS = 4
+
+	/**
+	 * Small spacing unit (8dp).
+	 * 
+	 * Used for spacing between related elements within a component.
+	 */
+	const val SPACING_SM = 8
+
+	/**
+	 * Medium spacing unit (16dp).
+	 * 
+	 * Standard spacing between major UI elements and screen padding.
+	 */
+	const val SPACING_MD = 16
+
+	/**
+	 * Large spacing unit (24dp).
+	 * 
+	 * Used for spacing between major sections and large gaps.
+	 */
+	const val SPACING_LG = 24
+
+	/**
+	 * Extra large spacing unit (32dp).
+	 * 
+	 * Used for top-level spacing and large section separations.
+	 */
+	const val SPACING_XL = 32
 }
 

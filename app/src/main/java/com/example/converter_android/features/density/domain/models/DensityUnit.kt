@@ -31,14 +31,14 @@ enum class DensityUnit(
 	val displayNameRes: Int,
 	val conversionFactorToKgPerM3: Double
 ) {
-	KILOGRAM_PER_CUBIC_METER(com.example.converter_android.R.string.unit_kilogram_per_cubic_meter, 1.0),
-	GRAM_PER_CUBIC_CENTIMETER(com.example.converter_android.R.string.unit_gram_per_cubic_centimeter, 1000.0),
-	GRAM_PER_CUBIC_METER(com.example.converter_android.R.string.unit_gram_per_cubic_meter, 0.001),
-	KILOGRAM_PER_LITER(com.example.converter_android.R.string.unit_kilogram_per_liter, 1000.0),
-	GRAM_PER_LITER(com.example.converter_android.R.string.unit_gram_per_liter, 1.0),
-	MILLIGRAM_PER_LITER(com.example.converter_android.R.string.unit_milligram_per_liter, 0.001),
-	POUND_PER_CUBIC_FOOT(com.example.converter_android.R.string.unit_pound_per_cubic_foot, 16.0185),
-	POUND_PER_GALLON(com.example.converter_android.R.string.unit_pound_per_gallon, 119.8264),
-	SPECIFIC_GRAVITY(com.example.converter_android.R.string.unit_specific_gravity, 1000.0) // SG * 1000 = kg/m³
+	KILOGRAM_PER_CUBIC_METER(com.forestmusic.converter_android.R.string.unit_kilogram_per_cubic_meter, 1.0),
+	GRAM_PER_CUBIC_CENTIMETER(com.forestmusic.converter_android.R.string.unit_gram_per_cubic_centimeter, 1000.0),
+	GRAM_PER_CUBIC_METER(com.forestmusic.converter_android.R.string.unit_gram_per_cubic_meter, 0.001),
+	KILOGRAM_PER_LITER(com.forestmusic.converter_android.R.string.unit_kilogram_per_liter, 1000.0),
+	GRAM_PER_LITER(com.forestmusic.converter_android.R.string.unit_gram_per_liter, 1.0),
+	MILLIGRAM_PER_LITER(com.forestmusic.converter_android.R.string.unit_milligram_per_liter, 0.001),
+	POUND_PER_CUBIC_FOOT(com.forestmusic.converter_android.R.string.unit_pound_per_cubic_foot, 16.0185),
+	POUND_PER_GALLON(com.forestmusic.converter_android.R.string.unit_pound_per_gallon, 119.8264),
+	SPECIFIC_GRAVITY(com.forestmusic.converter_android.R.string.unit_specific_gravity, 1000.0) // SG * 1000 = kg/m³
 }
 
