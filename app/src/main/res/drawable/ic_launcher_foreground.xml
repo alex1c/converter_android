@@ -5,142 +5,145 @@
     android:viewportWidth="108"
     android:viewportHeight="108">
     
-    <!-- Circular arrow loop (clockwise) - thick white arrow forming a complete cycle -->
+    <!-- Thick white circular arrow forming a continuous clockwise loop -->
     <!-- Stretched to maximum size, filling the entire icon space -->
     
-    <!-- Top section: arrow pointing right (thick, stretched to edges) -->
+    <!-- Top section: arrow pointing right (thick) -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M6,8 L6,4 L90,4 L90,8 L96,8 L96,14 L90,14 L90,8 L6,8 Z" />
+        android:pathData="M4,6 L4,2 L92,2 L92,6 L98,6 L98,12 L92,12 L92,6 L4,6 Z" />
     
-    <!-- Top-right arrowhead pointing down-right (larger, more prominent) -->
+    <!-- Top-right arrowhead pointing down-right (clockwise direction) -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M96,8 L102,16 L96,24 L90,16 Z" />
+        android:pathData="M98,6 L104,14 L98,22 L92,14 Z" />
     
-    <!-- Right section: arrow pointing down (thick, stretched to right edge) -->
+    <!-- Right section: arrow pointing down (thick) -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M102,16 L106,16 L106,84 L102,84 L102,92 L98,84 L102,84 L102,16 Z" />
+        android:pathData="M104,14 L108,14 L108,86 L104,86 L104,94 L100,86 L104,86 L104,14 Z" />
     
-    <!-- Bottom-right arrowhead pointing down-left (larger) -->
+    <!-- Bottom-right arrowhead pointing down-left (clockwise direction) -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M102,92 L96,100 L90,92 L98,84 Z" />
+        android:pathData="M104,94 L98,102 L92,94 L100,86 Z" />
     
-    <!-- Bottom section: arrow pointing left (thick, stretched to bottom edge) -->
+    <!-- Bottom section: arrow pointing left (thick) -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M90,100 L6,100 L6,96 L2,96 L2,92 L6,92 L6,100 L90,100 Z" />
+        android:pathData="M92,102 L4,102 L4,98 L0,98 L0,94 L4,94 L4,102 L92,102 Z" />
     
-    <!-- Bottom-left arrowhead pointing up-left (larger) -->
+    <!-- Bottom-left arrowhead pointing up-left (clockwise direction) -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M2,92 L-4,84 L2,76 L6,84 Z" />
+        android:pathData="M0,94 L-6,86 L0,78 L4,86 Z" />
     
-    <!-- Left section: arrow pointing up (thick, stretched to left edge) -->
+    <!-- Left section: arrow pointing up (thick) -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M-4,84 L-4,16 L2,16 L2,8 L6,16 L2,16 L2,84 L-4,84 Z" />
+        android:pathData="M-6,86 L-6,14 L0,14 L0,6 L4,14 L0,14 L0,86 L-6,86 Z" />
     
     <!-- Top-left section: completing the loop -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M6,14 L90,14 L90,8 L6,8 Z" />
+        android:pathData="M4,12 L92,12 L92,6 L4,6 Z" />
     
-    <!-- Central gear (8 teeth) - larger, centered, more prominent -->
-    <!-- Gear body (outer circle) - bigger -->
+    <!-- Central gear (8 teeth) - positioned at center, larger and prominent -->
+    <!-- Gear body (outer circle) -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M46,34 C46,30.69 48.69,28 52,28 C55.31,28 58,30.69 58,34 C58,37.31 55.31,40 52,40 C48.69,40 46,37.31 46,34 Z" />
+        android:pathData="M48,36 C48,32.69 50.69,30 54,30 C57.31,30 60,32.69 60,36 C60,39.31 57.31,42 54,42 C50.69,42 48,39.31 48,36 Z" />
     
     <!-- Gear teeth (8 teeth around) - larger and more visible -->
     <!-- Top tooth -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M52,20 L56,20 L56,28 L52,28 Z" />
+        android:pathData="M54,20 L58,20 L58,30 L54,30 Z" />
     
     <!-- Top-right tooth -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M62,28 L66,32 L62,36 L58,32 Z" />
+        android:pathData="M64,30 L68,34 L64,38 L60,34 Z" />
     
     <!-- Right tooth -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M66,34 L72,34 L72,38 L66,38 Z" />
+        android:pathData="M68,36 L74,36 L74,40 L68,40 Z" />
     
     <!-- Bottom-right tooth -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M62,44 L66,48 L62,52 L58,48 Z" />
+        android:pathData="M64,46 L68,50 L64,54 L60,50 Z" />
     
     <!-- Bottom tooth -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M52,52 L56,52 L56,60 L52,60 Z" />
+        android:pathData="M54,54 L58,54 L58,64 L54,64 Z" />
     
     <!-- Bottom-left tooth -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M42,44 L38,48 L34,44 L38,40 Z" />
+        android:pathData="M44,46 L40,50 L36,46 L40,42 Z" />
     
     <!-- Left tooth -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M34,34 L28,34 L28,38 L34,38 Z" />
+        android:pathData="M36,36 L30,36 L30,40 L36,40 Z" />
     
     <!-- Top-left tooth -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M42,28 L38,24 L34,28 L38,32 Z" />
+        android:pathData="M44,30 L40,26 L36,30 L40,34 Z" />
     
-    <!-- Gear center circle - larger -->
+    <!-- Gear center circle -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M49,34 C49,32.34 50.34,31 52,31 C53.66,31 55,32.34 55,34 C55,35.66 53.66,37 52,37 C50.34,37 49,35.66 49,34 Z" />
+        android:pathData="M51,36 C51,34.34 52.34,33 54,33 C55.66,33 57,34.34 57,36 C57,37.66 55.66,39 54,39 C52.34,39 51,37.66 51,36 Z" />
     
-    <!-- Lightning bolt (top-left) - pointing down-right, positioned at top-left area -->
+    <!-- Lightning bolt (top-left) - pointing downwards and slightly to the right -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M24,24 L36,14 L29,14 L32,8 L20,18 L27,18 Z" />
+        android:pathData="M22,22 L34,12 L27,12 L30,6 L18,16 L25,16 Z" />
     
-    <!-- Thermometer (top-center) - hanging vertically, above gear -->
+    <!-- Thermometer (top-center) - hanging vertically with bulb at bottom -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M50,12 L56,12 L56,34 L50,34 Z" />
+        android:pathData="M50,10 L56,10 L56,34 L50,34 Z" />
     <path
         android:fillColor="#FFFFFF"
         android:pathData="M48,34 L58,34 L58,42 L48,42 Z" />
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M52,8 L54,8 L54,12 L52,12 Z" />
+        android:pathData="M52,6 L54,6 L54,10 L52,10 Z" />
     
-    <!-- Rocket (top-right) - launching upward and to the right, positioned at top-right area -->
+    <!-- Rocket ship (top-right) - launching upwards and to the right with flame trails -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M72,42 L86,36 L86,50 L72,50 Z" />
+        android:pathData="M72,40 L86,34 L86,48 L72,48 Z" />
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M79,50 L79,62 L77,62 L77,50 Z" />
+        android:pathData="M79,48 L79,60 L77,60 L77,48 Z" />
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M75,62 L83,62 L79,70 Z" />
+        android:pathData="M75,60 L83,60 L79,68 Z" />
+    <!-- Flame trail 1 -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M77,62 L77,66 L81,66 L81,62 Z" />
+        android:pathData="M77,60 L77,64 L79,64 L79,60 Z" />
+    <!-- Flame trail 2 -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M75,62 L75,66 L77,66 L77,62 Z" />
+        android:pathData="M75,60 L75,64 L77,64 L77,60 Z" />
     
-    <!-- Cube (bottom-center) - isometric 3D view, below gear -->
+    <!-- Three-dimensional cube (bottom-center) - isometric projection showing top, front, and right faces -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M42,64 L50,60 L58,64 L50,68 Z" />
+        android:pathData="M42,62 L50,58 L58,62 L50,66 Z" />
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M50,60 L58,64 L58,74 L50,70 Z" />
+        android:pathData="M50,58 L58,62 L58,72 L50,68 Z" />
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M42,64 L50,68 L50,78 L42,74 Z" />
+        android:pathData="M42,62 L50,66 L50,76 L42,72 Z" />
 </vector>
+

@@ -19,14 +19,19 @@ android {
 	}
 
 	signingConfigs {
-		create("release") {
-			// Keystore configuration for release builds
-			// In production, use environment variables or keystore.properties file
-			// For now, using debug keystore - MUST be changed before production release
-			storeFile = file("${project.rootDir}/keystore/debug.keystore")
-			storePassword = "android"
-			keyAlias = "androiddebugkey"
-			keyPassword = "android"
+		// Release signing config - only used if keystore exists
+		// For debug builds, Android uses default debug signing automatically
+		val keystoreFile = file("${project.rootDir}/keystore/debug.keystore")
+		if (keystoreFile.exists()) {
+			create("release") {
+				// Keystore configuration for release builds
+				// In production, use environment variables or keystore.properties file
+				// For now, using debug keystore - MUST be changed before production release
+				storeFile = keystoreFile
+				storePassword = "android"
+				keyAlias = "androiddebugkey"
+				keyPassword = "android"
+			}
 		}
 	}
 
@@ -38,7 +43,10 @@ android {
 				getDefaultProguardFile("proguard-android-optimize.txt"),
 				"proguard-rules.pro"
 			)
-			signingConfig = signingConfigs.getByName("release")
+			// Only use signing config if it exists
+			if (signingConfigs.findByName("release") != null) {
+				signingConfig = signingConfigs.getByName("release")
+			}
 		}
 		debug {
 			applicationIdSuffix = ".debug"
