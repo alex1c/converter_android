@@ -31,15 +31,14 @@ android {
 	}
 
 	signingConfigs {
-		val keystoreFile = file("${project.rootDir}/keystore/release.keystore")
-		if (keystoreFile.exists()) {
-			create("release") {
-				// Keystore configuration for release builds
-				storeFile = keystoreFile
-				storePassword = keystoreProperties["KEYSTORE_PASSWORD"] as String? ?: ""
-				keyAlias = "release"
-				keyPassword = keystoreProperties["KEY_PASSWORD"] as String? ?: ""
-			}
+		create("release") {
+			// Keystore configuration for release builds
+			// Only used if keystore file exists (checked when applied to build type)
+			val keystoreFile = file("${project.rootDir}/keystore/release.keystore")
+			storeFile = keystoreFile
+			storePassword = keystoreProperties["KEYSTORE_PASSWORD"] as String? ?: ""
+			keyAlias = "release"
+			keyPassword = keystoreProperties["KEY_PASSWORD"] as String? ?: ""
 		}
 	}
 
