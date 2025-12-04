@@ -11,7 +11,9 @@ plugins {
 val keystorePropertiesFile = rootProject.file("keystore.properties")
 val keystoreProperties = Properties()
 if (keystorePropertiesFile.exists()) {
-	keystoreProperties.load(FileInputStream(keystorePropertiesFile))
+	FileInputStream(keystorePropertiesFile).use { input ->
+		keystoreProperties.load(input)
+	}
 }
 
 android {
@@ -29,12 +31,15 @@ android {
 	}
 
 	signingConfigs {
-		create("release") {
-			// Keystore configuration for release builds
-			storeFile = file("${project.rootDir}/keystore/release.keystore")
-			storePassword = keystoreProperties["KEYSTORE_PASSWORD"] as String? ?: ""
-			keyAlias = "release"
-			keyPassword = keystoreProperties["KEY_PASSWORD"] as String? ?: ""
+		val keystoreFile = file("${project.rootDir}/keystore/release.keystore")
+		if (keystoreFile.exists()) {
+			create("release") {
+				// Keystore configuration for release builds
+				storeFile = keystoreFile
+				storePassword = keystoreProperties["KEYSTORE_PASSWORD"] as String? ?: ""
+				keyAlias = "release"
+				keyPassword = keystoreProperties["KEY_PASSWORD"] as String? ?: ""
+			}
 		}
 	}
 
@@ -46,7 +51,11 @@ android {
 				getDefaultProguardFile("proguard-android-optimize.txt"),
 				"proguard-rules.pro"
 			)
-			signingConfig = signingConfigs.getByName("release")
+			// Only apply signing config if keystore exists
+			val keystoreFile = file("${project.rootDir}/keystore/release.keystore")
+			if (keystoreFile.exists()) {
+				signingConfig = signingConfigs.getByName("release")
+			}
 		}
 		debug {
 			applicationIdSuffix = ".debug"
