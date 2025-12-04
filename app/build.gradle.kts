@@ -1,7 +1,17 @@
+import java.util.Properties
+import java.io.FileInputStream
+
 plugins {
 	alias(libs.plugins.android.application)
 	alias(libs.plugins.kotlin.android)
 	alias(libs.plugins.kotlin.compose)
+}
+
+// Load keystore properties
+val keystorePropertiesFile = rootProject.file("keystore.properties")
+val keystoreProperties = Properties()
+if (keystorePropertiesFile.exists()) {
+	keystoreProperties.load(FileInputStream(keystorePropertiesFile))
 }
 
 android {
@@ -19,19 +29,12 @@ android {
 	}
 
 	signingConfigs {
-		// Release signing config - only used if keystore exists
-		// For debug builds, Android uses default debug signing automatically
-		val keystoreFile = file("${project.rootDir}/keystore/debug.keystore")
-		if (keystoreFile.exists()) {
-			create("release") {
-				// Keystore configuration for release builds
-				// In production, use environment variables or keystore.properties file
-				// For now, using debug keystore - MUST be changed before production release
-				storeFile = keystoreFile
-				storePassword = "android"
-				keyAlias = "androiddebugkey"
-				keyPassword = "android"
-			}
+		create("release") {
+			// Keystore configuration for release builds
+			storeFile = file("${project.rootDir}/keystore/release.keystore")
+			storePassword = keystoreProperties["KEYSTORE_PASSWORD"] as String? ?: ""
+			keyAlias = "release"
+			keyPassword = keystoreProperties["KEY_PASSWORD"] as String? ?: ""
 		}
 	}
 
@@ -43,21 +46,18 @@ android {
 				getDefaultProguardFile("proguard-android-optimize.txt"),
 				"proguard-rules.pro"
 			)
-			// Only use signing config if it exists
-			if (signingConfigs.findByName("release") != null) {
-				signingConfig = signingConfigs.getByName("release")
-			}
+			signingConfig = signingConfigs.getByName("release")
 		}
 		debug {
 			applicationIdSuffix = ".debug"
 		}
 	}
 	compileOptions {
-		sourceCompatibility = JavaVersion.VERSION_11
-		targetCompatibility = JavaVersion.VERSION_11
+		sourceCompatibility = JavaVersion.VERSION_17
+		targetCompatibility = JavaVersion.VERSION_17
 	}
 	kotlinOptions {
-		jvmTarget = "11"
+		jvmTarget = "17"
 	}
 	buildFeatures {
 		compose = true

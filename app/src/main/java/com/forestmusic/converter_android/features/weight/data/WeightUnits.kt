@@ -18,7 +18,7 @@ import com.forestmusic.converter_android.features.weight.domain.models.WeightUni
  * - Default "to" unit: Gram (g) - a common smaller unit for comparison
  * 
  * @see WeightUnit
- * @see com.forestmusic.converter_android.features.weight.ui.WeightViewModel
+ * @see com.example.converter_android.features.weight.ui.WeightViewModel
  */
 object WeightUnits {
 	/**

@@ -22,7 +22,7 @@ import com.forestmusic.converter_android.features.weight.domain.models.WeightUni
  * 
  * @see ConvertWeightUseCase
  * @see WeightUnit
- * @see com.forestmusic.converter_android.features.weight.ui.WeightViewModel
+ * @see com.example.converter_android.features.weight.ui.WeightViewModel
  */
 class WeightConverter {
 	/**
