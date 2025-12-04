@@ -30,15 +30,19 @@ android {
 		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 	}
 
+	// Check keystore existence before creating signing config
+	val keystoreFile = file("${project.rootDir}/keystore/release.keystore")
+	val keystoreExists = keystoreFile.exists()
+
 	signingConfigs {
-		create("release") {
-			// Keystore configuration for release builds
-			// Only used if keystore file exists (checked when applied to build type)
-			val keystoreFile = file("${project.rootDir}/keystore/release.keystore")
-			storeFile = keystoreFile
-			storePassword = keystoreProperties["KEYSTORE_PASSWORD"] as String? ?: ""
-			keyAlias = "release"
-			keyPassword = keystoreProperties["KEY_PASSWORD"] as String? ?: ""
+		if (keystoreExists) {
+			create("release") {
+				// Keystore configuration for release builds
+				storeFile = keystoreFile
+				storePassword = keystoreProperties["KEYSTORE_PASSWORD"] as String? ?: ""
+				keyAlias = "release"
+				keyPassword = keystoreProperties["KEY_PASSWORD"] as String? ?: ""
+			}
 		}
 	}
 
@@ -50,10 +54,9 @@ android {
 				getDefaultProguardFile("proguard-android-optimize.txt"),
 				"proguard-rules.pro"
 			)
-			// Only apply signing config if keystore exists
-			val keystoreFile = file("${project.rootDir}/keystore/release.keystore")
-			if (keystoreFile.exists()) {
-				signingConfig = signingConfigs.getByName("release")
+			// Only apply signing config if it was created (keystore exists)
+			if (keystoreExists) {
+				signingConfig = signingConfigs.findByName("release")
 			}
 		}
 		debug {
